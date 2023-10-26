@@ -2,4 +2,4 @@
 My WWW site -> https://ReDesignIT.pl
 
 ----> At the moment work in progress locally <----
-Hope i will host it soon
+Hope that I will host it soon
