@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+{% load static %}
 <html>
   <head>
     <title>ReDesignIT</title>
-    <link rel="stylesheet" href="css/mystyle.css" type="text/css" />
+    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" type="text/css" />
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
   </head>
   <body>
     <div class="container">
@@ -17,7 +19,7 @@
           ></b
         >
       </p>
-      <img src="hedgehog.jpg" class="hedgehog_in_progress" />
+      <img src="static/images/hedgehog.jpg" class="hedgehog_in_progress" />
     </div>
   </body>
 </html>
