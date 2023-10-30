@@ -3,12 +3,12 @@
 <html>
   <head>
     <title>ReDesignIT</title>
-    <link rel="stylesheet" href="{% static 'css/mystyle.css' %}" type="text/css" />
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static '/css/mystyle.css' %}" type="text/css" />
+    <link rel="shortcut icon" type="image/png" href="{% static '/images/favicon.ico' %}"/>
   </head>
   <body>
     <div class="container">
-      <h1>Hello, creation in progress :)</h1>
+      <h1>Hello, creation in progress :-)</h1>
       <p>
         <b>
           Code being created locally. You can check it at
@@ -19,7 +19,7 @@
           ></b
         >
       </p>
-      <img src="static/images/hedgehog.jpg" class="hedgehog_in_progress" />
+      <img src="{% static '/images/hedgehog.jpg' %}" class="hedgehog_in_progress" />
     </div>
   </body>
 </html>
