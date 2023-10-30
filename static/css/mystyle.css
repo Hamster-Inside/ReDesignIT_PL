@@ -21,13 +21,13 @@ h1 {
   font-family: arial;
   font-size: 24px;
   margin: 25px;
-  width: 350px;
-  height: 600px;
+  width: 400px;
+  height: auto;
   justify-content: center;
   align-items: center;
 }
 
 .hedgehog_in_progress {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: auto;
 }
