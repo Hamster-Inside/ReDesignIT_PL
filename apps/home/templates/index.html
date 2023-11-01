@@ -1,25 +1,19 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html>
-  <head>
-    <title>ReDesignIT</title>
-    <link rel="stylesheet" href="{% static '/css/mystyle.css' %}" type="text/css" />
-    <link rel="shortcut icon" type="image/png" href="{% static '/images/favicon.ico' %}"/>
-  </head>
-  <body>
-    <div class="container">
-      <h1>Hello, creation in progress :-)</h1>
-      <p>
-        <b>
-          Code being created locally. You can check it at
-          <a
-            href="https://github.com/Hamster-Inside/ReDesignIT_PL"
-            style="color: aqua"
-            >GITHUB</a
-          ></b
-        >
-      </p>
-      <img src="{% static '/images/website_renovation.jpg' %}" class="hedgehog_in_progress" />
-    </div>
-  </body>
-</html>
+{% block content %}
+
+<h1>Hello, creation in progress :-)</h1>
+<p>
+    <b>
+        Code being created locally. You can check it at
+        <a
+                href="https://github.com/Hamster-Inside/ReDesignIT_PL"
+                style="color: aqua"
+        >GITHUB</a
+        ></b
+    >
+</p>
+<img src="{% static '/images/website_renovation.jpg' %}" class="work-in-progress"/>
+
+
+{% endblock %}

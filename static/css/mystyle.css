@@ -1,33 +1,57 @@
 html {
-  height: 100%;
+
 }
 
 body {
-  display: flex;
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
+  justify-content: center;
+  align-items: center;
   height: 100vh;
-  margin: 0; /* Remove default margin to ensure full centering */
-  background-color: #000000cf !important; /* Optional, just for visualization */
+  margin: 0;
+  background-color: #e3f2fd !important;
+  margin-left: 100px;
 }
 
+ /* Style the header */
+#header-sticky {
+  padding: 10px 16px;
+  background: #555;
+  color: #f1f1f1;
+}
+
+/* Page content */
+.content {
+  padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+  padding-top: 102px;
+}
+
+
+
+div {
+border: 2px solid black;
+}
 h1 {
   color: rgb(205, 205, 236);
   margin-left: 20px;
   text-align: center;
 }
 
-.container {
-  font-family: arial;
-  font-size: 24px;
-  margin: 25px;
-  width: 400px;
-  height: auto;
-  justify-content: center;
-  align-items: center;
+.nav-background{
+background-color: #e3f2fd;
 }
 
-.hedgehog_in_progress {
+.work-in-progress {
   width: 400px;
   height: auto;
 }
+

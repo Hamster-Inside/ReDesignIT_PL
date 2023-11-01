@@ -1,10 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<!--<header class="main-header">-->
+<!--    <div class="container justify-content-center">-->
+<!--        <nav class="navbar" style="background-color: #e3f2fd;">-->
+<!--            <div class="container-fluid justify-content-center">-->
+<!--                <a href="/">-->
+<!--                    <button type="button" class="btn btn-outline-success me-2">Home</button>-->
+<!--                </a><a href="/projects/">-->
+<!--                <button type="button" class="btn btn-sm btn-outline-secondary">My Projects</button>-->
+<!--            </a>-->
+<!--            </div>-->
+<!--        </nav>-->
+<!--    </div>-->
+<!--</header>-->
 
-</body>
-</html>
+{% load static %}
+
+<div class="top-container">
+  <h1>Scroll Down</h1>
+  <p>Scroll down to see the sticky effect.</p>
+</div>
+
+<header class="header" id="header-sticky">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand d-block d-lg-none" href="#">
+            <img src="{% static '/images/logo-redesign.jpg' %}" height="80"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mx-auto ">
+                <li class="nav-item">
+                    <a class="nav-link mx-2 active text-danger" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-danger" href="#">Products</a>
+                </li>
+                <li class="nav-item d-none d-lg-block">
+                    <a class="nav-link mx-2" href="#">
+                        <img src="{% static '/images/logo-redesign.jpg' %}" height="80"/>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-2 text-danger" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link mx-2 dropdown-toggle text-danger" href="#" id="navbarDropdownMenuLink"
+                       role="button"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Company
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <li><a class="dropdown-item" href="#">Blog</a></li>
+                        <li><a class="dropdown-item" href="#">About Us</a></li>
+                        <li><a class="dropdown-item" href="#">Contact us</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

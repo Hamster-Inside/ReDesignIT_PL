@@ -1,0 +1,10 @@
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
+
+@media screen and (min-width:992px){
+.nav-item{
+line-height:80px;
+}
+}
