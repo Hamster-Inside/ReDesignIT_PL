@@ -1,9 +1,5 @@
-.nav-text{
-color: green;
-}
-
-div {
-/* border: 2px solid black; */
+.header, .navbar, .nav-link{
+font-family: 'Roboto', sans-serif;
 }
 
 #header-sticky {

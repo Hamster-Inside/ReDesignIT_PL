@@ -40,6 +40,8 @@ INSTALLED_APPS = [
     'bootstrap5',
     'apps.home',
     'apps.projects',
+    'apps.about',
+    'apps.contact',
 ]
 
 MIDDLEWARE = [
