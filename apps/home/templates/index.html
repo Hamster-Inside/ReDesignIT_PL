@@ -25,17 +25,18 @@
     <img src="{% static '/images/hexa-me.png' %}" class="me-pic"/>
 </div>
 <div class="div-main-right-section col">
-    <div class="main-right-section-content border border-primary rounded-3 d-grid gap-3">
+    <div class="main-right-section-content border border-primary rounded-3">
         <h4>
             My profiles:
         </h4>
-        {% for social_profile in social_profiles %}
-
-            <div class="d-flex align-items-center profiles-div rounded-3"><a href="{{social_profile.profile_url}}"
+        <div class="equal-row-height">
+            {% for social_profile in social_profiles %}
+            <div class="profiles-div rounded-3 d-flex align-items-center"><a href="{{social_profile.profile_url}}"
                                                    target="_blank"><img src="{{social_profile.image.url}}"></a>
             </div>
 
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>
 

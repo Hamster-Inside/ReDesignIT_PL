@@ -17,9 +17,9 @@ margin: 0 auto;
   padding: 16px;
 }
 
-.main-right-section-content img{
+.profiles-div img{
 width: 80%;
-height: auto;
+
 }
 
 .intro-main-mid, .main-left-section-content, .main-right-section-content{
@@ -36,6 +36,15 @@ height: auto;
    padding-left: 0;
 }
 
+.main-right-section-content{
+
+   }
+.equal-row-height {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 10px;
+}
+
 .profiles-div{
     display:inline-block;
     color:#444;
@@ -44,8 +53,6 @@ height: auto;
     box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
     cursor:pointer;
     vertical-align:middle;
-    max-width: 200px;
-    min-height: 70px;
     padding: 5px;
     text-align: center;
     }
