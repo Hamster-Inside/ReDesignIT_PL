@@ -32,9 +32,8 @@
         <div class="equal-row-height">
             {% for social_profile in social_profiles %}
             <div class="profiles-div rounded-3 d-flex align-items-center"><a href="{{social_profile.profile_url}}"
-                                                   target="_blank"><img src="{{social_profile.image.url}}"></a>
+                                                   target="_blank"><img src="{{social_profile.image.url}}" alt="{{social_profile.profile_name}}"></a>
             </div>
-
             {% endfor %}
         </div>
     </div>
