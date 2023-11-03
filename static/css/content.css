@@ -45,6 +45,7 @@ height: auto;
     cursor:pointer;
     vertical-align:middle;
     max-width: 200px;
+    min-height: 70px;
     padding: 5px;
     text-align: center;
     }
