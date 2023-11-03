@@ -5,7 +5,7 @@ from django.db import models
 
 class ProgrammingLanguage(models.Model):
     image = models.ImageField(upload_to='images/', blank=True)
-    programming_language = models.CharField(max_length=50)
+    programming_language_name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.programming_language

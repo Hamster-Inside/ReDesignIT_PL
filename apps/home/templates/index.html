@@ -3,12 +3,30 @@
 {% block content %}
 <div class="div-main-left-section col">
     <div class="main-left-section-content border border-primary rounded-3">
-        <h4><p>Technologies used to build this site:</p></h4>
-        <ul>
-            <li>DJANGO</li>
-            <li>Bootstrap5</li>
-            <li>HTML, CSS, JS</li>
-        </ul>
+        <h4>Programming languages used to build this site:</h4>
+        <div class="equal-row-height">
+            {% for programming_language in programming_languages %}
+            <div class="languages-frameworks-div rounded-3 d-flex align-items-center justify-content-center">
+                {% if programming_language.image %}
+                <img src="{{programming_language.image.url}}">
+                {% else %}
+                {{programming_language.programming_language_name}}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        <h4>Frameworks used to build this site:</h4>
+        <div class="equal-row-height">
+            {% for framework in frameworks %}
+            <div class="languages-frameworks-div rounded-3 d-flex align-items-center justify-content-center">
+                {% if framework.image %}
+                <img src="{{framework.image.url}}">
+                {% else %}
+                {{framework.framework_name}}
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
     </div>
 </div>
 <div class="div-main-mid-section col-7">
@@ -32,11 +50,12 @@
         <div class="equal-row-height">
             {% for social_profile in social_profiles %}
             <div class="profiles-div rounded-3 d-flex align-items-center"><a href="{{social_profile.profile_url}}"
-                                                   target="_blank"><img src="{{social_profile.image.url}}" alt="{{social_profile.profile_name}}"></a>
+                                                                             target="_blank"><img
+                    src="{{social_profile.image.url}}" alt="{{social_profile.profile_name}}"></a>
             </div>
             {% endfor %}
         </div>
     </div>
 </div>
- 
+
 {% endblock %}
