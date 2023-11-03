@@ -17,3 +17,12 @@ class Framework(models.Model):
 
     def __str__(self):
         return self.framework_name
+
+
+class Profiles(models.Model):
+    image = models.ImageField(upload_to='images/', blank=True)
+    profile_name = models.CharField(max_length=50)
+    profile_url = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.profile_name
