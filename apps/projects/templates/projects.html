@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-<div class="projects-div"> PROJECT 1 </div> <div class="projects-div"> PROJECT 2 </div> <div class="projects-div"> PROJECT 3</div>
+
+{% for project in my_projects %}
+<div class="projects-div"> {{ project.project_name }}</div>
+{% endfor %}
+
 {% endblock %}
