@@ -23,7 +23,7 @@ height: auto;
 }
 
 .intro-main-mid, .main-left-section-content, .main-right-section-content{
-    background-color:rgba(93,208,81,0.5);
+    background-color:rgba(93,208,81,0.7);
     display: inline-block;
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;

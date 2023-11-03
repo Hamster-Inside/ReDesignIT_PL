@@ -19,7 +19,7 @@
 <header class="header" id="header-sticky">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand d-block d-lg-none" href="{% url 'home' %}">
-                <img src="{% static '/images/logo-redesign.jpg' %}"/>
+                <img src="{% static '/images/logo-redesign.jpg' %}" height="80"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,18 +42,11 @@
                 <li class="nav-item">
                     <a class="nav-link mx-2" href="{% url 'about' %}">About me</a> </p>
                 </li>
-                <li class="nav-item dropdown">
-                    <a class="nav-link mx-2 dropdown-toggle" href="{% url 'contact' %}" id="navbarDropdownMenuLink"
-                       role="button"
-                       data-bs-toggle="dropdown" aria-expanded="false">
+
+                    <a class="nav-link mx-2" href="{% url 'contact' %}">
                         Contact me
                     </a>
-                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <li><a class="dropdown-item" href="#">Blog</a></li>
-                        <li><a class="dropdown-item" href="#">About Us</a></li>
-                        <li><a class="dropdown-item" href="#">Contact us</a></li>
-                    </ul>
-                </li>
+
             </ul>
         </div>
     </nav>
