@@ -19,7 +19,7 @@
 <header class="header" id="header-sticky">
     <nav class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand d-block d-lg-none" href="{% url 'home' %}">
-                <img src="{% static '/images/logo-redesign.jpg' %}" height="80"/>
+            <img src="{% static '/images/logo-redesign.jpg' %}" height="80"/>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,26 +27,32 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav mx-auto border border-primary rounded-3">
-                <li class="nav-item">
-                    <a class="nav-link mx-2 active navbar-custom" aria-current="page" href="{% url 'home' %}">Home</a>
+            <ul class="navbar-nav mx-auto rounded-3">
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link mx-2 active navbar-custom" aria-current="page" href="{% url 'home' %}">
+                        <div class="header-button-like-div d-flex align-items-center rounded-3">Home</div>
+                    </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2" href="{% url 'projects' %}">Projects</a>
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link mx-2" href="{% url 'projects' %}">
+                        <div class="d-flex align-items-center header-button-like-div rounded-3">Projects</div>
+                    </a>
                 </li>
                 <li class="nav-item d-none d-lg-block">
                     <a class="nav-link mx-2" href="{% url 'home' %}">
                         <img src="{% static '/images/logo-redesign.jpg' %}" height="80"/>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link mx-2" href="{% url 'about' %}">About me</a> </p>
-                </li>
-
-                    <a class="nav-link mx-2" href="{% url 'contact' %}">
-                        Contact me
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link mx-2" href="{% url 'about' %}">
+                        <div class="header-button-like-div d-flex align-items-center rounded-3">About me</div>
                     </a>
-
+                </li>
+                <li class="nav-item d-flex align-items-center">
+                    <a class="nav-link mx-2" href="{% url 'contact' %}">
+                        <div class="header-button-like-div d-flex align-items-center rounded-3">Contact me</div>
+                    </a>
+                </li>
             </ul>
         </div>
     </nav>

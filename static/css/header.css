@@ -23,3 +23,26 @@ font-family: 'Roboto', sans-serif;
 .top-container{
 height: 20px;
 }
+
+.header-button-like-div{
+    display:inline-block;
+    justify-content: center;
+    color:#444;
+    border:1px solid #CCC;
+    background:#a0fe81;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    vertical-align:middle;
+    max-width: 200px;
+    min-width: 150px;
+    min-height: 60px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    }
+
+.header-button-like-div:hover {
+  background-color: yellow;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
