@@ -16,12 +16,17 @@ body {
   justify-content: center;
 
 }
+#content-wrap {
+  padding-bottom: 30px;    /* Footer height */
+}
 
 #container{
 max-width: 1000px;
 justify-content: center;
   margin-right: auto;
   margin-left: auto;
+  position: relative;
+  min-height: 100vh;
 }
 
 .work-in-progress {

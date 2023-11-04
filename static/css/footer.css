@@ -1,15 +1,14 @@
 .my-footer{
-  height: 20px;
-  position: relative;
-  bottom: 0;
+  height: 30px;
   width: 100%;
-  font-size: 20px;
-  align-items: center;
-  display: flex;
+  position: absolute;
+  bottom: 0;
+
 }
 
-.my-footer p{
-font-size: 48%;
-margin-top: 1rem;
-margin-bottom: 1rem;
+.foot{
+height: 100%;
+font-size: 80%;
+text-align: center;
+line-height: 30px;
 }
