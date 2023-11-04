@@ -13,6 +13,15 @@ cursor: url('/static/images/pointer-32x32.png') 10 3, default;
 body {
   background-image: url('/static/images/background-redesignit.png');
   background-size: cover;
+  justify-content: center;
+
+}
+
+#container{
+max-width: 1000px;
+justify-content: center;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .work-in-progress {

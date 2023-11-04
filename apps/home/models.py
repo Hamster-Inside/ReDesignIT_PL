@@ -8,7 +8,7 @@ class ProgrammingLanguage(models.Model):
     programming_language_name = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.programming_language
+        return self.programming_language_name
 
 
 class Framework(models.Model):

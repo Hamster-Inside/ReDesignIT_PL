@@ -19,7 +19,13 @@ margin: 0 auto;
 
 .profiles-div img{
 width: 80%;
+}
 
+.main-left-section-content, .main-right-section-content{
+max-width: 200px;
+}
+.main-left-section-content img{
+width: 80%;
 }
 
 .intro-main-mid, .main-left-section-content, .main-right-section-content{
@@ -36,9 +42,6 @@ width: 80%;
    padding-left: 0;
 }
 
-.main-right-section-content{
-
-   }
 .equal-row-height {
     display: grid;
     grid-auto-rows: 1fr;
