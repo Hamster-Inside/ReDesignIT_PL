@@ -16,15 +16,13 @@
 </head>
 <body>
 <div id="container">
- <div id="content-wrap">
     {% include 'header.html' %}
 
-    <div class="content">
-        {% block content %}{% endblock %}
-    </div>
+    {% block content %}
+
+    {% endblock %}
 
     {% include 'footer.html' %}
- </div>
 </div>
 
 <script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>

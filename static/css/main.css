@@ -1,24 +1,20 @@
 @import "header.css";
-@import "content.css";
+@import "content-home.css";
+@import "content-projects.css";
 @import "footer.css";
 
 
 html, body {
 height: 100%;
-margin: 0;
-padding: 0;
+width: 100%;
 cursor: url('/static/images/pointer-32x32.png') 10 3, default;
 }
 
 body {
   background-image: url('/static/images/background-redesignit.png');
   background-size: cover;
-  justify-content: center;
+}
 
-}
-#content-wrap {
-  padding-bottom: 30px;    /* Footer height */
-}
 
 #container{
 max-width: 1000px;
@@ -26,7 +22,8 @@ justify-content: center;
   margin-right: auto;
   margin-left: auto;
   position: relative;
-  min-height: 100vh;
+  height: 100%
+  padding-bottom: 30px;
 }
 
 .work-in-progress {
@@ -34,4 +31,8 @@ justify-content: center;
   height: auto;
 }
 
-
+.center{
+justify-content: center;
+align-items: center;
+vertical-align:middle;
+}
