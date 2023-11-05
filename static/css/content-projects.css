@@ -4,6 +4,8 @@
     grid-auto-rows: 1fr;
     width: 100%;
     grid-row-gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .projects-div {

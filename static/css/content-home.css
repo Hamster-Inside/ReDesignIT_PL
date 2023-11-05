@@ -4,10 +4,16 @@
     grid-template-columns: 1fr 4fr 1fr;
     width: 100%;
     grid-column-gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
 }
 
 .div-main-mid-section{
-text-align:center;
+    justify-content: center;
+    text-align:center;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 10px;
 }
 .div-main-mid-section p,
 .div-main-mid-section img {
@@ -16,20 +22,21 @@ margin: 0 auto;
 }
 
 .profiles-div img{
-width: 80%;
+max-width: 80%;
+height: auto;
 }
 
 .main-left-section-content img{
-width: 80%;
+max-width: 80%;
+height: auto;
 }
 
 .intro-main-mid, .main-left-section-content, .main-right-section-content{
     background-color:rgba(93,208,81,0.7);
-    margin-bottom: 10px;
-    font-family: 'Roboto', sans-serif;
     padding: 10px 10px 10px 10px;
     justify-content: center;
     text-align: center;
+    min-width: 0px;
 }
 
 .equal-row-height {
@@ -70,10 +77,20 @@ width: 80%;
 .me-pic {
   max-width: 312px;
   height: auto;
+  margin-top: 30px;
+  margin-left: auto;
+   margin-right: auto;
 }
+
+.me-pic img{
+width: 100%;
+height: 100%;
+ object-fit: contain;
+ }
+
 .git-logo {
   width: auto;
-  height: 50px;
+  max-height: 50px;
 }
 
 

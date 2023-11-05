@@ -13,6 +13,7 @@ margin: 0;
 body {
   background-image: url('/static/images/background-redesignit.png');
   background-size: cover;
+  font-family: 'Roboto', sans-serif;
 }
 
 #page-container{
