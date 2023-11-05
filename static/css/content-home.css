@@ -1,6 +1,12 @@
+/* Page content */
+.content-home {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    width: 100%;
+    grid-column-gap: 10px;
+}
 
 .div-main-mid-section{
-width: 60%;
 text-align:center;
 }
 .div-main-mid-section p,
@@ -9,28 +15,16 @@ display:block;
 margin: 0 auto;
 }
 
-/* Page content */
-.content {
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  padding: 16px;
-}
-
 .profiles-div img{
 width: 80%;
 }
 
-.main-left-section-content, .main-right-section-content{
-max-width: 200px;
-}
 .main-left-section-content img{
 width: 80%;
 }
 
 .intro-main-mid, .main-left-section-content, .main-right-section-content{
     background-color:rgba(93,208,81,0.7);
-    display: inline-block;
     margin-bottom: 10px;
     font-family: 'Roboto', sans-serif;
     padding: 10px 10px 10px 10px;
@@ -38,14 +32,10 @@ width: 80%;
     text-align: center;
 }
 
-.main-right-section-content ul{
-   padding-left: 0;
-}
-
 .equal-row-height {
     display: grid;
     grid-auto-rows: 1fr;
-    gap: 10px;
+    grid-row-gap: 10px;
 }
 
 .profiles-div{
@@ -58,6 +48,7 @@ width: 80%;
     vertical-align:middle;
     padding: 5px;
     text-align: center;
+
     }
 
 .languages-frameworks-div{
@@ -77,10 +68,15 @@ width: 80%;
 }
 
 .me-pic {
-  width: 312px;
+  max-width: 312px;
   height: auto;
 }
 .git-logo {
   width: auto;
   height: 50px;
 }
+
+
+
+
+
