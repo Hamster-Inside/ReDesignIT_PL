@@ -3,8 +3,10 @@
 {% block content %}
 
 <div class="my-grid-projects">
-        {% for project in my_projects %}
-            <div class="border border-primary rounded-3 projects-div">
+    {% for project in my_projects %}
+    <div class="border border-primary rounded-3 my-standard-background">
+        <a href="{% url 'projects' %}{{project.pk}}">
+            <div class="full-vh-vw-div projects-div">
                 <div class="project-image">
                     {% if project.image %}
                     <img src="{{project.image.url}}">
@@ -13,10 +15,12 @@
                     {% endif %}
                 </div>
                 <div class="project-title">
-                <h4>{{ project.project_name }}</h4>
+                    <h4>{{ project.project_name }}</h4>
                 </div>
             </div>
-        {% endfor %}
+        </a>
+    </div>
+    {% endfor %}
 </div>
 
 {% endblock %}
