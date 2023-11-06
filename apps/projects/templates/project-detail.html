@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="border border-primary rounded-3 my-grid-project-detail my-standard-background">
-    <div class="full-vh-vw-div div-project-detail">
+    <div class="div-project-detail">
         <div class="project-image">
             {% if project.image %}
             <img src="{{project.image.url}}">
@@ -15,14 +15,22 @@
             <h4>{{ project.project_name }}</h4>
         </div>
     </div>
-    <div class="full-vh-vw-div div-project-detail">
-        <div class="div-connected-links">
-
-            LINKS
-            LINKS
-            LINKS
-
-
+    <div class="div-project-detail">
+        <div class="div-connected-links align-items-center">
+            {% if project.github_url %}
+            <div class="div-link-to-source rounded-3 d-flex align-items-center">
+                <a href="{{project.github_url}}" target="_blank">
+                    <img src="{% static '/images/github-logo.png' %}">
+                </a>
+            </div>
+            {% endif %}
+             {% if project.youtube_url %}
+            <div class="div-link-to-source rounded-3 d-flex align-items-center">
+                <a href="{{project.youtube_url}}" target="_blank">
+                    <img src="{% static '/images/youtube-logo.png' %}">
+                </a>
+            </div>
+            {% endif %}
         </div>
         <div class="div-project-detail-summary">
             {{project.summary|linebreaks}}
