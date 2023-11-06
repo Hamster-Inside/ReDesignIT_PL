@@ -2,9 +2,34 @@
 {% load static %}
 {% block content %}
 
-<div class="project-detail">
-{{project.project_name}}
-    {{project.summary}}
+<div class="border border-primary rounded-3 my-grid-project-detail my-standard-background">
+    <div class="full-vh-vw-div div-project-detail">
+        <div class="project-image">
+            {% if project.image %}
+            <img src="{{project.image.url}}">
+            {% else %}
+            <img src="{% static '/images/project-puzzle-pieces.jpg' %}">
+            {% endif %}
+        </div>
+        <div class="project-title">
+            <h4>{{ project.project_name }}</h4>
+        </div>
+    </div>
+    <div class="full-vh-vw-div div-project-detail">
+        <div class="div-connected-links">
+
+            LINKS
+            LINKS
+            LINKS
+
+
+        </div>
+        <div class="div-project-detail-summary">
+            {{project.summary|linebreaks}}
+        </div>
+
+    </div>
 </div>
+
 
 {% endblock %}

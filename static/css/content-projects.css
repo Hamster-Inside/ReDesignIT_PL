@@ -8,6 +8,26 @@
     padding-right: 30px;
 }
 
+.my-grid-project-detail{
+    display: grid;
+    grid-template-rows: 1fr auto;
+    width: 100%;
+    grid-row-gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.div-project-detail-summary{
+text-align: justify;
+}
+
+.div-project-detail {
+    padding: 10px 10px 10px 10px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-row-gap: 10px;
+}
+
 .my-standard-background{
     background-color:rgba(93,208,81,0.7);
 }
@@ -17,12 +37,10 @@ height: 100%;
 }
 
 .projects-div {
-
     padding: 10px 10px 10px 10px;
     display: grid;
     grid-template-columns: 1fr 2fr;
     grid-row-gap: 10px;
-
 }
 
 .project-title{
