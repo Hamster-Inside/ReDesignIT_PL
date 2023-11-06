@@ -40,8 +40,11 @@ margin: auto;
 }
 
 .project-image img{
-
     max-width: 100%;
     height: auto;
+}
 
+.projects-div:hover{
+    background-color:rgba(93,208,81,0.9);
+    cursor: pointer;
 }

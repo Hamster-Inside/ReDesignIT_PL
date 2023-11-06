@@ -13,10 +13,10 @@ def projects(request):
     return render(request, template, context)
 
 
-def project_detail(request, pk):
+def project_detail(request, slug):
     template = 'project-detail.html'
     try:
-        picked_project = Project.objects.get(pk=pk)
+        picked_project = Project.objects.get(slug=slug)
         context = {'project': picked_project}
     except Project.DoesNotExist:
         raise Http404("Project does not exist")
