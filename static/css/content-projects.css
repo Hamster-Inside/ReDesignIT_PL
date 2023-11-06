@@ -28,9 +28,7 @@ text-align: justify;
     grid-row-gap: 10px;
 }
 
-.my-standard-background{
-    background-color:rgba(93,208,81,0.7);
-}
+
 .full-vh-vw-div {
 width: 100%;
 height: 100%;

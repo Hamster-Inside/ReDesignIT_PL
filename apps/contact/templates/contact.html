@@ -2,6 +2,11 @@
 {% load static %}
 {% block content %}
 
-Contact ME :)
+<div class="border border-primary rounded-3 my-standard-background div-contact">
+
+    <h1>{{contact_me.contact_text|linebreaks}}</h1>
+   <div class="div-mail"> <a href="mailto:{{contact_me.contact_email}}"><h3>{{contact_me.contact_email}}</h3></a></div>
+</div>
+
 
 {% endblock %}

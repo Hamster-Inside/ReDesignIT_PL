@@ -1,10 +1,11 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from .models import About
 
 
 # Create your views here.
 
 def about(request):
-    template = loader.get_template('about.html')
-    return HttpResponse(template.render())
+    about_me = About.objects.first()
+    template = 'about.html'
+    context = {'about': about_me}
+    return render(request, template, context)

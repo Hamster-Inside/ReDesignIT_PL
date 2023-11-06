@@ -1,6 +1,8 @@
 @import "header.css";
 @import "content-home.css";
 @import "content-projects.css";
+@import "content-about.css";
+@import "content-contact.css";
 @import "footer.css";
 
 html, body {
@@ -37,4 +39,8 @@ body {
 justify-content: center;
 align-items: center;
 vertical-align:middle;
+}
+
+.my-standard-background{
+    background-color:rgba(93,208,81,0.7);
 }

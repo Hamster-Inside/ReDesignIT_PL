@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import Http404
-from django.template import loader
 from .models import Project
 
 
