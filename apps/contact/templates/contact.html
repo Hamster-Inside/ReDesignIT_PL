@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% load static %}
 {% block content %}
-
+<link rel="stylesheet" href="{% static '/css/orb-style.css' %}" type="text/css"/>
 <div class="border border-primary rounded-3 my-standard-background div-contact">
 
     <h1>{{contact_me.contact_text|linebreaks}}</h1>
    <div class="div-mail"> <a href="mailto:{{contact_me.contact_email}}"><h3>{{contact_me.contact_email}}</h3></a></div>
+
+ <div id="myText"></div>
+<div class="div-orb d-flex align-items-center justify-content-center"> <canvas></canvas></div>
+<script src="{% static '/js/one-by-one-writing.js' %}"></script>
+    <script src="{% static '/js/orb.js' %}"></script>
 </div>
 
 

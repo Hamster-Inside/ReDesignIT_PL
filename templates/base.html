@@ -13,23 +13,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
     <link rel="stylesheet" href="{% static '/css/main.css' %}" type="text/css"/>
+    <script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>
+    <script src="{% static '/js/popper.min.js' %}"></script>
 </head>
 <body>
 <div id="page-container">
-<div id="main-container">
+    <div id="main-container">
 
-    {% include 'header.html' %}
+        {% include 'header.html' %}
 
-    {% block content %}
+        {% block content %}
 
-    {% endblock %}
+        {% endblock %}
 
-</div>
+    </div>
 
     {% include 'footer.html' %}
 
 </div>
-<script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>
-<script src="{% static '/js/popper.min.js' %}"></script>
+
 </body>
 </html>
