@@ -3,3 +3,5 @@ python-dotenv
 psycopg2
 pillow
 django-bootstrap-v5
+django-crispy-forms
+crispy-bootstrap5
