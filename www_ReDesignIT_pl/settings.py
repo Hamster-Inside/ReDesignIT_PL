@@ -131,14 +131,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'apps/login/static'),
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'apps/login/static'),
                     os.path.join(BASE_DIR, 'apps/home/static'),
                     os.path.join(BASE_DIR, 'apps/contact/static'),
                     os.path.join(BASE_DIR, 'apps/about/static'),
                     os.path.join(BASE_DIR, 'apps/projects/static'),
-                    )
+                    ]
+if DEBUG:
+    pass
+    #STATICFILES_DIRS.append(os.path.join(BASE_DIR, 'static'))
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 

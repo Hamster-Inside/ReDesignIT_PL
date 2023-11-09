@@ -1,7 +1,13 @@
 {% extends "base.html" %}
+
 {% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/contact-styles.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static '/css/contact-orb-style.css' %}" type="text/css"/>
+{% endblock %}
+
 {% block content %}
-<link rel="stylesheet" href="{% static '/css/orb-style.css' %}" type="text/css"/>
 <div class="border border-primary rounded-3 my-standard-background div-contact">
 
     <h1>{{contact_me.contact_text|linebreaks}}</h1>
@@ -10,9 +16,7 @@
 
 
 <div class="div-orb d-flex align-items-center justify-content-center rounded-circle"> <canvas></canvas></div>
-<script src="{% static '/js/one-by-one-writing.js' %}"></script>
-    <script src="{% static '/js/orb.js' %}"></script>
+<script src="{% static '/js/contact-one-by-one-writing.js' %}"></script>
+    <script src="{% static '/js/contact-orb.js' %}"></script>
 </div>
-
-
 {% endblock %}

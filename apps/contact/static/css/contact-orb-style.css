@@ -1,0 +1,21 @@
+canvas {
+    position: relative;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+    height: 100%;
+    overflow: hidden;
+    background-color: blue;
+}
+
+.div-orb{
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    overflow: hidden;
+    aspect-ratio: 1;
+    max-height: 200px;
+    max-width: 200px;
+    min-height: 80px;
+    min-width: 80px;
+}
