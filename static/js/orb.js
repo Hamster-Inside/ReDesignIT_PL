@@ -1,4 +1,4 @@
-const MAX = 25;
+const MAX = 200;
 
 var canvas, ctx;
 var count = 0;
@@ -7,8 +7,9 @@ var points = [];
 window.onload = function () {
     canvas = document.getElementsByTagName("canvas")[0];
     ctx = canvas.getContext("2d");
-    canvas.width = canvas.height = 600;
-    ctx.fillRect(0, 0, 600, 600);
+
+    canvas.width = canvas.height = 500;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
 
     var r = 0;
     for (var a = 0; a < MAX; a++) {
@@ -68,10 +69,10 @@ function rus() {
                 const b = p2[d * MAX + a];
                 const c = p2[((a + 1) % MAX) + d * MAX];
                 ctx.beginPath();
-                ctx.strokeStyle = "hsla(" + (((a / MAX) * 180) | 0) + ",70%,60%,0.15)";
+                ctx.strokeStyle = "hsla(" + (((a / MAX) * 250) | 0) + ",70%,60%,0.15)";
                 ctx.lineWidth = Math.pow(6, b[2]);
-                ctx.lineTo(b[0] * s + 300, b[1] * s + 300);
-                ctx.lineTo(c[0] * s + 300, c[1] * s + 300);
+                ctx.lineTo(b[0] * s + 250, b[1] * s + 250);
+                ctx.lineTo(c[0] * s + 250, c[1] * s + 250);
                 ctx.stroke();
             }
         }
