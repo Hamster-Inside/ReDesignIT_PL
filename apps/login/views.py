@@ -4,8 +4,9 @@ from django.contrib.auth import login
 from django.contrib import messages
 
 
-def login(request):
+def login(request, info='no info'):
     template = 'login.html'
+    print(info)
     context = {}
     return render(request, template, context)
 
@@ -17,7 +18,7 @@ def register_request(request):
             user = form.save()
             login(request, user)
             messages.success(request, "Registration successful.")
-            return redirect("main:home")
+            return redirect("home")
         messages.error(request, "Unsuccessful registration. Invalid information.")
     form = NewUserForm()
     return render(request=request, template_name="register.html", context={"register_form": form})

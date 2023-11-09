@@ -9,19 +9,21 @@
 {% block content %}
 {% load crispy_forms_tags %}
 
-<div class="border border-primary rounded-3 my-standard-background">
+<div class="border border-primary rounded-3 my-standard-background d-flex align-items-center justify-content-center">
     <div id="login-box">
-    <!--Register-->
-    <div class="container py-5">
-        <h1>Register</h1>
-        <form method="POST">
-            {% csrf_token %}
-            {{ register_form|crispy }}
-            <button class="btn btn-primary" type="submit">Register</button>
-        </form>
-        <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+        <!--Register-->
+        <div class="container py-5">
+            <h1>Register</h1>
+            <form method="POST">
+                {% csrf_token %}
+                {{ register_form|crispy }}
+                <div class="text-center">
+                    <button class="btn btn-primary " type="submit">Register</button>
+                </div>
+            </form>
+            <p class="text-center">If you already have an account, <a href="/login">login</a> instead.</p>
+        </div>
     </div>
-</div>
 </div>
 
 {% endblock %}
