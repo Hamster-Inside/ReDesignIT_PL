@@ -1,9 +1,17 @@
-.header, .navbar, .nav-link{
-font-family: 'Roboto', sans-serif;
+.header-login-text{
+color: yellow;
+}
+
+.top-container nav{
+height: 100%;
+}
+
+.navbar-nav-as-row{
+flex-direction: row;
 }
 
 #header-sticky {
-  padding: 10px 16px;
+  padding: 0px 16px;
   color: #f1f1f1;
 }
 
@@ -21,7 +29,7 @@ font-family: 'Roboto', sans-serif;
 }
 
 .top-container{
-height: 20px;
+height: 40px;
 }
 
 .header-button-like-div{
