@@ -12,6 +12,13 @@
     <!--Login-->
     <div id="login-box">
         <div class="container py-5">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
             <h1>Login</h1>
             <form method="POST">
                 {% csrf_token %}
