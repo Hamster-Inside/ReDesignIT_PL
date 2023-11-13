@@ -1,30 +1,38 @@
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView, LogoutView
+from django.urls import reverse_lazy
+from django.views import View
 from django.shortcuts import render, redirect
 from .forms import NewUserForm
 from django.contrib import messages
-from django.contrib.auth.forms import AuthenticationForm
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login
 
 
-def login_request(request):
-    if request.method == "POST":
-        form = AuthenticationForm(request, data=request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=password)
-            if user is not None:
-                login(request, user)
-                #messages.info(request, f"You are now logged in as {username}.")
-                return redirect("home")
-        else:
-            messages.error(request, "Invalid username or password.")
-            return redirect("login")
-    form = AuthenticationForm()
-    return render(request=request, template_name="login.html", context={"login_form": form})
+class CustomLoginView(LoginView):
+    template_name = "login.html"
+    authentication_form = AuthenticationForm
+    success_url = reverse_lazy("home")
+    success_message = "Login successful."
+    redirect_authenticated_user = False
+
+    def form_invalid(self, form):
+        messages.error(self.request, "Invalid username or password.")
+        return super().form_invalid(form)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["login_form"] = self.get_form()
+        return context
 
 
-def register_request(request):
-    if request.method == "POST":
+class CustomRegisterView(View):
+    template_name = "register.html"
+
+    def get(self, request, *args, **kwargs):
+        form = NewUserForm()
+        return render(request, self.template_name, {"register_form": form})
+
+    def post(self, request, *args, **kwargs):
         form = NewUserForm(request.POST)
         if form.is_valid():
             user = form.save()
@@ -32,18 +40,14 @@ def register_request(request):
             messages.success(request, "Registration successful.")
             return redirect("home")
         messages.error(request, "Unsuccessful registration. Invalid information.")
-        return redirect("register")
-    form = NewUserForm()
-    return render(request=request, template_name="register.html", context={"register_form": form})
+        return render(request, self.template_name, {"register_form": form})
 
 
-def logout_request(request):
-    logout(request)
-    #messages.info(request, "You have successfully logged out.")
-    return redirect("home")
+class CustomLogoutView(LogoutView):
+    next_page = "home"
 
 
-# Added below function because of the firefox problem auto add slash after url and ends with 404
+# Added below function because of the Firefox problem auto-adding slash after URL and ends with 404
 def login_redirect(request):
     return redirect("login")
 

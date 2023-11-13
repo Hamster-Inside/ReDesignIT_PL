@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['159.223.30.131', 'redesignit.pl', 'www.redesignit.pl']
 # Application definition
 
 LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
 
 INSTALLED_APPS = [
     'django.contrib.admin',

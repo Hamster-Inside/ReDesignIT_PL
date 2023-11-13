@@ -8,6 +8,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from .forms import TaskForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
+from django.contrib import messages
 
 
 class TaskOwnershipMixin(LoginRequiredMixin):
@@ -28,7 +29,12 @@ class TaskListView(LoginRequiredMixin, ListView):
     login_url = reverse_lazy(settings.LOGIN_URL)
 
     def get_queryset(self):
-        return Task.objects.filter(todo_user=self.request.user).order_by("pk")
+        if self.request.user.is_authenticated:
+            return Task.objects.filter(todo_user=self.request.user).order_by("pk")
+        else:
+            messages.warning(self.request, "You have to be logged in to see the tasks.")
+            messages.add_message(self.request, messages.WARNING, "You have to be logged in to see the tasks.")
+            return Task.objects.none()  # Return an empty queryset if not logged in
 
 
 class TaskDetailView(TaskOwnershipMixin, DetailView):
