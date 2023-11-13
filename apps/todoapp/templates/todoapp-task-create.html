@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/todoapp-styles.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
+
+  <h1>Create Task</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
+</div>
+{% endblock %}

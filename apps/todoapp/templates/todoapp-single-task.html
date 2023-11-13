@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/todoapp-styles.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+<div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
+<h1>{{ task.title }}</h1>
+<p>{{ task.description }}</p>
+<p>Completed:
+    {% if task.is_done %}
+    Yes
+    {% else %}
+    No
+    {% endif %}</p>
+<a href="{% url 'task_update' task.slug %}">Edit task</a>
+<a href="{% url 'task_delete' task.slug %}">Delete task</a>
+</div>
+{% endblock %}

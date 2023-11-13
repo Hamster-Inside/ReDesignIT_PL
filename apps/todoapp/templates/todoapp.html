@@ -7,7 +7,33 @@
 {% endblock %}
 
 {% block content %}
-<div class="todoapp-main-box">
-#TODO
+<div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
+    <h1>Your Tasks</h1>
+    <a href="{% url 'task_create' %}">Add Task</a>
+    {% for task in tasks %}
+    <div>
+        <div>
+            <h5>{{ task.title }}</h5>
+            <p>{{ task.description|truncatechars:50 }}</p>
+            <p>
+                <strong>Completed:</strong>
+                {% if task.is_done %}
+                Yes
+                {% else %}
+                No
+                {% endif %}
+            </p>
+            <a href="{% url 'task_detail' task.slug %}">
+                Read more
+            </a>
+            <a href="{% url 'task_delete' task.slug %}">
+                Delete task
+            </a>
+        </div>
+    </div>
+    {% empty %}
+    <h3>No tasks yet.</h3>
+    <a href="{% url 'task_create' %}">Add Task</a>
+    {% endfor %}
 </div>
 {% endblock %}

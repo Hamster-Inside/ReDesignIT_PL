@@ -30,6 +30,8 @@ ALLOWED_HOSTS = ['159.223.30.131', 'redesignit.pl', 'www.redesignit.pl']
 
 # Application definition
 
+LOGIN_URL = 'login'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'apps.login',
     'crispy_forms',
     'crispy_bootstrap5',
+    'apps.todoapp',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"

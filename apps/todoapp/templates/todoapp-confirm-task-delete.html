@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static '/css/todoapp-styles.css' %}" type="text/css"/>
+{% endblock %}
+
+{% block content %}
+
+<div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
+  <h1>Confirm Delete</h1>
+  <p>Are you sure you want to delete "{{ object.title }}"?</p>
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+    <a href="{% url 'tasks' %}">Cancel</a>
+  </form>
+</div>
+
+{% endblock %}
