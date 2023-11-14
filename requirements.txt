@@ -1,11 +1,11 @@
 django
-python-dotenv
-psycopg2
-pillow
-django-bootstrap-v5
-django-crispy-forms
-crispy-bootstrap5
-pyyaml
-ua-parser
-user-agents
-django-user-agents
+python-dotenv #for secure data
+psycopg2 #server side needed
+pillow #for images
+django-bootstrap-v5 #nice looking CSS
+django-crispy-forms #forms for login/register, automate the work
+crispy-bootstrap5 #forms for login/register, automate the work
+pyyaml # working with django-user-agents
+ua-parser # working with django-user-agents
+user-agents # working with django-user-agents
+django-user-agents # working with django-user-agents
