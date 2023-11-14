@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
 from django.shortcuts import render, redirect
@@ -8,12 +9,11 @@ from django.contrib import messages
 from django.contrib.auth import login
 
 
-class CustomLoginView(LoginView):
+class CustomLoginView(SuccessMessageMixin, LoginView):
     template_name = "login.html"
     authentication_form = AuthenticationForm
     success_url = reverse_lazy("home")
     success_message = "Login successful."
-    redirect_authenticated_user = False
 
     def form_invalid(self, form):
         messages.error(self.request, "Invalid username or password.")
