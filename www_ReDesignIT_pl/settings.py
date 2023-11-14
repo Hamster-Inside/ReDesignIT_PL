@@ -33,6 +33,35 @@ ALLOWED_HOSTS = ['159.223.30.131', 'redesignit.pl', 'www.redesignit.pl']
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
+LOGGING = {
+    "version": 1,  # the dictConfig format version
+    "disable_existing_loggers": False,  # retain the default loggers
+    "handlers": {
+        "file": {
+            "class": "logging.FileHandler",
+            "filename": "ReDesignIT_LOGS.log",
+            "formatter": "verbose",
+        },
+    },
+    "loggers": {
+        "apps.home.views": {
+            "level": "DEBUG",
+            "handlers": ["file"],
+        },
+    },
+    "formatters": {
+        "verbose": {
+            "format": "{name} {levelname} {asctime} {module} {process:d} {thread:d} {message}",
+            "style": "{",
+        },
+        "simple": {
+            "format": "{levelname} {message}",
+            "style": "{",
+        },
+    },
+
+}
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
