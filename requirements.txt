@@ -5,3 +5,7 @@ pillow
 django-bootstrap-v5
 django-crispy-forms
 crispy-bootstrap5
+pyyaml
+ua-parser
+user-agents
+django-user-agents
