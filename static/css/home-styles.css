@@ -7,7 +7,19 @@
     padding-left: 30px;
     padding-right: 30px;
 }
+@media (max-width: 650px) {
+  .content-home {
+    grid-template-columns: 1fr;
+  }
 
+  .div-main-left-section {
+    order: 2;
+  }
+
+  .div-main-right-section {
+    order: 3;
+  }
+}
 .div-main-mid-section{
     justify-content: center;
     text-align:center;

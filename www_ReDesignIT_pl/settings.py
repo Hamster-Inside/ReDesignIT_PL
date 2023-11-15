@@ -75,9 +75,9 @@ INSTALLED_APPS = [
     'apps.about',
     'apps.contact',
     'apps.login',
+    'apps.todoapp',
     'crispy_forms',
     'crispy_bootstrap5',
-    'apps.todoapp',
     'django_user_agents',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
@@ -171,6 +171,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'apps/login/static'),
                     os.path.join(BASE_DIR, 'apps/contact/static'),
                     os.path.join(BASE_DIR, 'apps/about/static'),
                     os.path.join(BASE_DIR, 'apps/projects/static'),
+                    os.path.join(BASE_DIR, 'apps/todoapp/static'),
                     ]
 if DEBUG:
     STATICFILES_DIRS.append(os.path.join(BASE_DIR, 'static'))

@@ -1,6 +1,6 @@
 from django.shortcuts import get_object_or_404
 from django.http import Http404
-from .models import Task
+from .models import Task, TaskGroup
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -22,15 +22,32 @@ class TaskOwnershipMixin(LoginRequiredMixin):
         return obj
 
 
+class TaskGroupListView(LoginRequiredMixin, ListView):
+    model = TaskGroup
+    template_name = 'todoapp.html'
+    context_object_name = 'taskgroup_list'
+    login_url = reverse_lazy(settings.LOGIN_URL)
+
+    def get_queryset(self):
+        if self.request.user.is_authenticated:
+            return TaskGroup.objects.filter(author=self.request.user).order_by("pk")
+        else:
+            messages.warning(self.request, "You have to be logged in to see the tasks.")
+            messages.add_message(self.request, messages.WARNING, "You have to be logged in to see the tasks.")
+            return TaskGroup.objects.none()  # Return an empty queryset if not logged in
+
+
 class TaskListView(LoginRequiredMixin, ListView):
     model = Task
-    template_name = 'todoapp.html'
+    template_name = 'todoapp-group-tasks.html'
     context_object_name = 'tasks'
     login_url = reverse_lazy(settings.LOGIN_URL)
 
     def get_queryset(self):
         if self.request.user.is_authenticated:
-            return Task.objects.filter(todo_user=self.request.user).order_by("pk")
+            tasks = Task.objects.filter(author=self.request.user).order_by("pk")
+            print(f'those are tasks: {tasks}')
+            return tasks
         else:
             messages.warning(self.request, "You have to be logged in to see the tasks.")
             messages.add_message(self.request, messages.WARNING, "You have to be logged in to see the tasks.")
@@ -75,5 +92,5 @@ class TaskDeleteView(TaskOwnershipMixin, DeleteView):
     login_url = reverse_lazy(settings.LOGIN_URL)
 
     def delete(self, request, *args, **kwargs):
-        self.object = get_object_or_404(Task, slug=kwargs['slug'], todo_user=self.request.user)
+        self.object = get_object_or_404(Task, slug=kwargs['slug'], author=self.request.user)
         return super().delete(request, *args, **kwargs)
