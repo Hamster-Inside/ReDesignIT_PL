@@ -8,9 +8,16 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
+    <p>Completed:
+        {% if taskgroup.is_done %}
+        Yes
+        {% else %}
+        No
+        {% endif %}</p>
+
     <h1>Your Tasks</h1>
-    <a href="{% url 'task_create' %}">Add Task</a>
-    {% for task in tasks %}
+    <a href="{% url 'task_create' taskgroup.slug %}">Add Task</a>
+    {% for task in taskgroup.task_set.all %}
     <div>
         <div>
             <h5>{{ task.title }}</h5>
@@ -23,17 +30,16 @@
                 No
                 {% endif %}
             </p>
-            <a href="{% url 'task_detail' task.slug %}">
+            <a href="{% url 'task_detail' taskgroup.slug task.slug %}">
                 Read more
             </a>
-            <a href="{% url 'task_delete' task.slug %}">
+            <a href="{% url 'task_delete' taskgroup.slug task.slug %}">
                 Delete task
             </a>
         </div>
     </div>
     {% empty %}
     <h3>No tasks yet.</h3>
-    <a href="{% url 'task_create' %}">Add Task</a>
     {% endfor %}
 </div>
 {% endblock %}

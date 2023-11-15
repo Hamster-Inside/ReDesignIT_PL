@@ -9,7 +9,7 @@
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
     <h1>Your Tasks</h1>
-
+    <a href="{% url 'taskgroup_create' %}">Add TaskGroup</a>
     {% for taskgroup in taskgroup_list %}
     <div>
         <div>
@@ -23,12 +23,17 @@
                 No
                 {% endif %}
             </p>
-
+            <a href="{% url 'taskgroup_detail' taskgroup.slug %}">
+                Read more
+            </a>
+            <a href="{% url 'taskgroup_delete' taskgroup.slug %}">
+                Delete task
+            </a>
         </div>
     </div>
     {% empty %}
     <h3>No taskgroups yet.</h3>
-
     {% endfor %}
+
 </div>
 {% endblock %}

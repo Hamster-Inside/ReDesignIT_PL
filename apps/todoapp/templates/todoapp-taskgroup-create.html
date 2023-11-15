@@ -8,15 +8,13 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-<h1>{{ task.title }}</h1>
-<p>{{ task.description }}</p>
-<p>Completed:
-    {% if task.is_done %}
-    Yes
-    {% else %}
-    No
-    {% endif %}</p>
-<a href="{% url 'task_update' task.slug %}">Edit task</a>
-<a href="{% url 'task_delete' task.slug %}">Delete task</a>
+
+  <h1>Create TaskGroup</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+
 </div>
 {% endblock %}
