@@ -1,5 +1,5 @@
-from django.shortcuts import get_object_or_404
-from django.http import Http404
+from django.shortcuts import get_object_or_404, redirect
+from django.http import Http404, HttpResponse
 from .models import Task, TaskGroup
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
@@ -137,6 +137,13 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     success_url = reverse_lazy('task_list')
     login_url = reverse_lazy(settings.LOGIN_URL)
 
+    def get(self, request, *args, **kwargs):
+        # Get the TaskGroup object based on the taskgroup_slug parameter
+        taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
+        self.object = taskgroup
+        context = self.get_context_data(object=taskgroup)
+        return self.render_to_response(context)
+
     def form_valid(self, form):
         # Get the TaskGroup based on the slug parameter
         taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
@@ -147,11 +154,14 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         # Set the author to the current user
         form.instance.author = self.request.user
 
-        return super().form_valid(form)
+        response = super().form_valid(form)
+        response['Cache-Control'] = 'no-cache'
+
+        return response
 
     def get_success_url(self):
-        # Redirect to the taskgroup_detail page after creating the task
-        return reverse_lazy('taskgroup_detail', kwargs={'taskgroup_slug': self.kwargs['taskgroup_slug']})
+        success_url = reverse_lazy('taskgroup_detail', kwargs={'taskgroup_slug': self.kwargs['taskgroup_slug']})
+        return success_url
 
 
 class TaskUpdateView(TaskOwnershipMixin, UpdateView):
@@ -179,7 +189,6 @@ class TaskUpdateView(TaskOwnershipMixin, UpdateView):
     def get_success_url(self):
         # Redirect to the taskgroup_detail page after creating the task
         return reverse_lazy('taskgroup_detail', kwargs={'taskgroup_slug': self.kwargs['taskgroup_slug']})
-
 
 
 class TaskDeleteView(TaskOwnershipMixin, DeleteView):

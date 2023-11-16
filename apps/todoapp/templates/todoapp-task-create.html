@@ -8,13 +8,14 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-
+TaskGroup: {{ taskgroup.slug }}
   <h1>Create Task</h1>
   <form method="post">
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit">Save</button>
   </form>
-
+<script src="{% static '/js/reset-form-fields.js' %}"></script>
 </div>
+
 {% endblock %}

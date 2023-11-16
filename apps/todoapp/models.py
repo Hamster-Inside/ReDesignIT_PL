@@ -11,8 +11,12 @@ class TaskGroup(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.name}-{self.pk}')
+            self.slug = slugify(self.name)
         super().save(*args, **kwargs)
+        new_slug = f'{slugify(self.name)}-{self.pk}'
+        if self.slug != new_slug:
+            self.slug = new_slug
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return self.name
@@ -28,8 +32,12 @@ class Task(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(f'{self.title}-{self.pk}')
+            self.slug = slugify(self.title)
         super().save(*args, **kwargs)
+        new_slug = f'{slugify(self.title)}-{self.pk}'
+        if self.slug != new_slug:
+            self.slug = new_slug
+            super().save(*args, **kwargs)
 
     def __str__(self):
         return self.title
