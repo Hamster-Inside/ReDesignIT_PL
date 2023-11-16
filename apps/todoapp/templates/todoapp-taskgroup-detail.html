@@ -8,12 +8,7 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-    <p>Completed:
-        {% if taskgroup.is_done %}
-        Yes
-        {% else %}
-        No
-        {% endif %}</p>
+    <p>Completed: {% if taskgroup.is_done %} Yes {% else %} No {% endif %}</p>
 
     <h1>Your Tasks</h1>
     <a href="{% url 'task_create' taskgroup.slug %}">Add Task</a>

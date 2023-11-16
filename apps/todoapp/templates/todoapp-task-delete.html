@@ -10,11 +10,11 @@
 
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
   <h1>Confirm Delete</h1>
-  <p>Are you sure you want to delete "{{ object.title }}"?</p>
+  <p>Are you sure you want to delete "{{ task.title }}"?</p>
   <form method="post">
     {% csrf_token %}
     <button type="submit">Delete</button>
-    <a href="{% url 'tasks' %}">Cancel</a>
+    <a href="{% url 'taskgroup_detail' taskgroup.slug%}">Cancel</a>
   </form>
 </div>
 
