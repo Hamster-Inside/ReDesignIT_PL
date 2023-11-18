@@ -9,7 +9,8 @@
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
     <p>Completed: {% if taskgroup.is_done %} Yes {% else %} No {% endif %}</p>
-
+    <a href="{% url 'taskgroup_update' taskgroup.slug %}">Edit Project (TaskGroup)</a>
+    <a href="{% url 'taskgroup_delete' taskgroup.slug %}">Delete Project (TaskGroup)</a>
     <h1>Your Tasks</h1>
     <a href="{% url 'task_create' taskgroup.slug %}">Add Task</a>
     {% for task in tasks %}

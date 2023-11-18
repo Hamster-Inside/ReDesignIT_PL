@@ -2,7 +2,17 @@ from django import forms
 from .models import Task, TaskGroup
 
 
-class TaskForm(forms.ModelForm):
+class TaskCreateForm(forms.ModelForm):
+    class Meta:
+        model = Task
+        fields = ['title', 'description']
+        widgets = {
+            'title': forms.TextInput(attrs={'class': 'form-control', }),
+            'description': forms.Textarea(attrs={'class': 'form-control', }),
+        }
+
+
+class TaskUpdateForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ['title', 'description', 'is_done']
@@ -13,7 +23,17 @@ class TaskForm(forms.ModelForm):
         }
 
 
-class TaskGroupForm(forms.ModelForm):
+class TaskGroupCreateForm(forms.ModelForm):
+    class Meta:
+        model = TaskGroup
+        fields = ['name']
+
+        widgets = {
+            'name': forms.TextInput(attrs={'class': 'form-control', }),
+        }
+
+
+class TaskGroupUpdateForm(forms.ModelForm):
     class Meta:
         model = TaskGroup
         fields = ['name', 'is_done']
@@ -22,4 +42,3 @@ class TaskGroupForm(forms.ModelForm):
             'name': forms.TextInput(attrs={'class': 'form-control', }),
             'is_done': forms.CheckboxInput(attrs={'class': 'form-check-input'}),
         }
-

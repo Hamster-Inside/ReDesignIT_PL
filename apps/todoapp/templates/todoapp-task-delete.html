@@ -14,7 +14,7 @@
   <form method="post">
     {% csrf_token %}
     <button type="submit">Delete</button>
-    <a href="{% url 'taskgroup_detail' taskgroup.slug%}">Cancel</a>
+    <a href="{% url 'taskgroup_detail' task.group.slug %}">Cancel</a>
   </form>
 </div>
 

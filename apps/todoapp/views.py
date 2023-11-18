@@ -1,11 +1,11 @@
 from django.shortcuts import get_object_or_404
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404
 from .models import Task, TaskGroup
-from django.urls import reverse_lazy, reverse
+from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic import CreateView, UpdateView, DeleteView
-from .forms import TaskForm, TaskGroupForm
+from .forms import TaskGroupCreateForm, TaskGroupUpdateForm, TaskCreateForm, TaskUpdateForm
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.conf import settings
 from django.contrib import messages
@@ -50,7 +50,7 @@ class TaskGroupListView(LoginRequiredMixin, ListView):
 
 class TaskGroupCreateView(LoginRequiredMixin, CreateView):
     model = TaskGroup
-    form_class = TaskGroupForm
+    form_class = TaskGroupCreateForm
     template_name = 'todoapp-taskgroup-create.html'
     success_url = reverse_lazy('taskgroup_list')
     login_url = reverse_lazy(settings.LOGIN_URL)
@@ -65,42 +65,60 @@ class TaskGroupTaskListView(TaskGroupOwnershipMixin, ListView):
     template_name = 'todoapp-taskgroup-detail.html'
     context_object_name = 'taskgroup'
     login_url = reverse_lazy(settings.LOGIN_URL)
+    taskgroup = None
+
+    def get(self, request, *args, **kwargs):
+        self.taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
+        return super().get(request, *args, **kwargs)
 
     def get_queryset(self):
-        # Get the TaskGroup object based on the slug parameter
-        taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
-        # Return the tasks related to the TaskGroup
-        return Task.objects.filter(group=taskgroup).order_by("pk")
+        return Task.objects.filter(group=self.taskgroup).order_by("pk")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['taskgroup'] = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'],
-                                                 author=self.request.user)
+        context['taskgroup'] = self.taskgroup
         context['tasks'] = self.get_queryset()
         return context
 
 
 class TaskGroupUpdateView(TaskGroupOwnershipMixin, UpdateView):
     model = TaskGroup
-    form_class = TaskGroupForm
+    form_class = TaskGroupUpdateForm
     template_name = 'todoapp-taskgroup-create.html'
-    success_url = reverse_lazy('taskgroup_list')
     login_url = reverse_lazy(settings.LOGIN_URL)
+
+    def get_object(self, queryset=None):
+        # Get the TaskGroup object based on the taskgroup_slug parameter
+        taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
+        return taskgroup
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
 
+    def get_success_url(self):
+        success_url = reverse_lazy('taskgroup_detail', kwargs={'taskgroup_slug': self.object.slug})
+        return success_url
+
 
 class TaskGroupDeleteView(TaskGroupOwnershipMixin, DeleteView):
     model = TaskGroup
     template_name = 'todoapp-taskgroup-delete.html'
+    context_object_name = 'taskgroup'
     success_url = reverse_lazy('taskgroup_list')
     login_url = reverse_lazy(settings.LOGIN_URL)
+    object = None
 
-    def delete(self, request, *args, **kwargs):
-        self.object = get_object_or_404(TaskGroup, slug=kwargs['slug'], author=self.request.user)
-        return super().delete(request, *args, **kwargs)
+    def get_object(self, queryset=None):
+        # Get the TaskGroup object based on the taskgroup_slug parameter
+        taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
+        return taskgroup
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['taskgroup'] = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'],
+                                                 author=self.request.user)
+        return context
 
 
 class TaskDetailView(TaskOwnershipMixin, DetailView):
@@ -122,7 +140,7 @@ class TaskDetailView(TaskOwnershipMixin, DetailView):
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     model = Task
-    form_class = TaskForm
+    form_class = TaskCreateForm
     template_name = 'todoapp-task-create.html'
     success_url = reverse_lazy('taskgroup_detail')
     login_url = reverse_lazy(settings.LOGIN_URL)
@@ -132,13 +150,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
         self.object = taskgroup
         context = self.get_context_data(object=taskgroup)
-
         return self.render_to_response(context)
-
-    def get_context_data(self, **kwargs):
-        if self.check_test(value):
-            attrs = {**(attrs or {}), "checked": True}
-        return super().get_context(name, value, attrs)
 
     def form_valid(self, form):
         taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
@@ -154,7 +166,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
 
 class TaskUpdateView(TaskOwnershipMixin, UpdateView):
     model = Task
-    form_class = TaskForm
+    form_class = TaskUpdateForm
     template_name = 'todoapp-task-update.html'
     login_url = reverse_lazy(settings.LOGIN_URL)
 
@@ -181,24 +193,21 @@ class TaskDeleteView(TaskOwnershipMixin, DeleteView):
     context_object_name = 'task'
     success_url = reverse_lazy('taskgroup_detail')
     login_url = reverse_lazy(settings.LOGIN_URL)
+    referer_url = None
 
     def get(self, request, *args, **kwargs):
-        # Get the TaskGroup object based on the taskgroup_slug parameter
-        taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
+        self.referer_url = request.META.get('HTTP_REFERER')
+        return super().get(request, *args, **kwargs)
 
-        # Get the Task object based on both taskgroup and task slugs
-        task = get_object_or_404(Task, group=taskgroup, slug=self.kwargs['task_slug'], author=self.request.user)
-
-        # Set the taskgroup in the context
-        self.object = task
-        context = self.get_context_data(object=taskgroup)
-
-        return self.render_to_response(context)
+    def get_object(self, queryset=None):
+        task = get_object_or_404(Task, slug=self.kwargs['task_slug'], author=self.request.user)
+        return task
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['taskgroup'] = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'],
-                                                 author=self.request.user)
         context['task'] = get_object_or_404(Task, slug=self.kwargs['task_slug'],
                                             author=self.request.user)
         return context
+
+    def get_success_url(self):
+        return reverse_lazy('taskgroup_detail', kwargs={'taskgroup_slug': self.kwargs['taskgroup_slug']})

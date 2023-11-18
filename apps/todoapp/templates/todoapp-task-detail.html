@@ -17,7 +17,7 @@
     No
     {% endif %}</p>
 
-<a href="{% url 'task_update' taskgroup.slug task.slug %}">Edit task</a>
-<a href="{% url 'task_delete' taskgroup.slug task.slug %}">Delete task</a>
+<a href="{% url 'task_update' task.group.slug task.slug %}">Edit task</a>
+<a href="{% url 'task_delete' task.group.slug task.slug %}">Delete task</a>
 </div>
 {% endblock %}

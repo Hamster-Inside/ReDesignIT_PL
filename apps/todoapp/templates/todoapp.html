@@ -8,7 +8,7 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-    <h1>Your Tasks</h1>
+    <h1>Your Projects (TaskGroups)</h1>
     <a href="{% url 'taskgroup_create' %}">Add TaskGroup</a>
     {% for taskgroup in taskgroup_list %}
     <div>
