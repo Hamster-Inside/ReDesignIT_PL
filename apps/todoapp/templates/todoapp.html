@@ -8,25 +8,30 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-    <div class="todoapp-taskgroup-name d-flex flex-column justify-content-center align-items-center">
-        <h1>Your Projects (TaskGroups)</h1>
-        <a href="{% url 'taskgroup_create' %}"><h2>Add TaskGroup</h2></a>
+    <div class="todo-taskgroup-title-author">
+        <div class="todoapp-taskgroup-name todo-flex-center-everything">
+            <h1>Your Projects (TaskGroups)</h1>
+            <div class="todo-flex-center-everything">
+                <a href="{% url 'taskgroup_create' %}"><h2>Add TaskGroup</h2></a></div>
+        </div>
     </div>
     <div class="todoapp-taskgroup-tasks">
         {% for taskgroup in taskgroup_list %}
 
         <div class="single-task-on-list border border-primary rounded-3">
-            <h5>{{ taskgroup.name }}</h5>
-            <p>Author: {{ taskgroup.author }}</p>
-            <p>
+            <div class="todo-flex-center-everything"><h4>{{ taskgroup.name }}</h4></div>
+            <div class="todo-flex-center-everything"><h6>Author: {{ taskgroup.author }}</h6></div>
+            <div class="taskgroup-complete todo-flex-center-everything">
                 <strong>Completed:</strong> {% if taskgroup.is_done %} Yes {% else %} No {% endif %}
-            </p>
-            <a href="{% url 'taskgroup_detail' taskgroup.slug %}">
-                Read more
-            </a>
-            <a href="{% url 'taskgroup_delete' taskgroup.slug %}">
-                Delete task
-            </a>
+            </div>
+            <div class="taskgroup-read-delete">
+                <div class="todo-flex-center-everything p-2">
+                    <a href="{% url 'taskgroup_detail' taskgroup.slug %}">Read more </a>
+                </div>
+                <div class="todo-flex-center-everything p-2">
+                    <a href="{% url 'taskgroup_delete' taskgroup.slug %}">Delete taskgroup </a>
+                </div>
+            </div>
         </div>
 
         {% empty %}

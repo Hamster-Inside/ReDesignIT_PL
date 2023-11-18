@@ -2,14 +2,10 @@
 padding: 20px;
 }
 
-.todoapp-taskgroup-name{
-
-}
-
 .todoapp-taskgroup-tasks{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: 1fr;
+    grid-template-rows: auto auto auto 1fr;;
     width: 100%;
     grid-column-gap: 10px;
     grid-row-gap: 10px;
@@ -17,9 +13,49 @@ padding: 20px;
     padding-right: 30px;
 
 }
+.todoapp-taskgroup-name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.taskgroup-read-delete{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.taskgroup-read-delete div{
+    flex-grow: 1;
+}
+.taskgroup-complete{
+    margin-bottom: 20px;
+}
+
 .single-task-on-list{
+    position: relative;
     min-width: 200px;
+    padding: 10px;
     background-color:rgba(93,208,81,0.8);
+
+}
+.todo-taskgroup-title-author{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    width: 100%;
+    grid-row-gap: 10px;
+}
+
+.todo-flex-center-everything {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 /* Styles for 250px to 750px */
