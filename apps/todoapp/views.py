@@ -132,7 +132,13 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
         taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
         self.object = taskgroup
         context = self.get_context_data(object=taskgroup)
+
         return self.render_to_response(context)
+
+    def get_context_data(self, **kwargs):
+        if self.check_test(value):
+            attrs = {**(attrs or {}), "checked": True}
+        return super().get_context(name, value, attrs)
 
     def form_valid(self, form):
         taskgroup = get_object_or_404(TaskGroup, slug=self.kwargs['taskgroup_slug'], author=self.request.user)
@@ -144,6 +150,7 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     def get_success_url(self):
         success_url = reverse_lazy('taskgroup_detail', kwargs={'taskgroup_slug': self.kwargs['taskgroup_slug']})
         return success_url
+
 
 class TaskUpdateView(TaskOwnershipMixin, UpdateView):
     model = Task

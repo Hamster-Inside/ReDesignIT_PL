@@ -12,7 +12,7 @@
 
     <h1>Your Tasks</h1>
     <a href="{% url 'task_create' taskgroup.slug %}">Add Task</a>
-    {% for task in taskgroup.task_set.all %}
+    {% for task in tasks %}
     <div>
         <div>
             <h5>{{ task.title }}</h5>
