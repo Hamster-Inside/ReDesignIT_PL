@@ -8,20 +8,18 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-    <h1>Your Projects (TaskGroups)</h1>
-    <a href="{% url 'taskgroup_create' %}">Add TaskGroup</a>
-    {% for taskgroup in taskgroup_list %}
-    <div>
-        <div>
+    <div class="todoapp-taskgroup-name d-flex flex-column justify-content-center align-items-center">
+        <h1>Your Projects (TaskGroups)</h1>
+        <a href="{% url 'taskgroup_create' %}"><h2>Add TaskGroup</h2></a>
+    </div>
+    <div class="todoapp-taskgroup-tasks">
+        {% for taskgroup in taskgroup_list %}
+
+        <div class="single-task-on-list border border-primary rounded-3">
             <h5>{{ taskgroup.name }}</h5>
-            <p>{{ taskgroup.author }}</p>
+            <p>Author: {{ taskgroup.author }}</p>
             <p>
-                <strong>Completed:</strong>
-                {% if taskgroup.is_done %}
-                Yes
-                {% else %}
-                No
-                {% endif %}
+                <strong>Completed:</strong> {% if taskgroup.is_done %} Yes {% else %} No {% endif %}
             </p>
             <a href="{% url 'taskgroup_detail' taskgroup.slug %}">
                 Read more
@@ -30,10 +28,10 @@
                 Delete task
             </a>
         </div>
-    </div>
-    {% empty %}
-    <h3>No taskgroups yet.</h3>
-    {% endfor %}
 
+        {% empty %}
+        <h3>No taskgroups yet.</h3>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

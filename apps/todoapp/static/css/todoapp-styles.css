@@ -1,3 +1,39 @@
 .todoapp-main-box{
+padding: 20px;
+}
+
+.todoapp-taskgroup-name{
 
 }
+
+.todoapp-taskgroup-tasks{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    width: 100%;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+.single-task-on-list{
+    min-width: 200px;
+    background-color:rgba(93,208,81,0.8);
+}
+
+/* Styles for 250px to 750px */
+@media (max-width: 750px) and (min-width: 350px) {
+    .todoapp-taskgroup-tasks {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Styles for below 250px */
+@media (max-width: 450px) {
+    .todoapp-taskgroup-tasks {
+        grid-template-columns: 1fr;
+    }
+}
+
+
