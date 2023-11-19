@@ -8,16 +8,20 @@ from django_recaptcha.widgets import ReCaptchaV3, ReCaptchaV2Checkbox
 class LoginWithCaptchaForm(AuthenticationForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
         api_params={'hl': 'pl'},
-        #attrs={'required_score': 0.85}
+        # attrs={'required_score': 0.85}
     ))
 
 
 class NewUserForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
+        api_params={'hl': 'pl'},
+        # attrs={'required_score': 0.85}
+    ))
 
     class Meta:
         model = User
-        fields = ("username", "email", "password1", "password2")
+        fields = ("username", "email", "password1", "password2", "captcha")
 
     def save(self, commit=True):
         user = super(NewUserForm, self).save(commit=False)
