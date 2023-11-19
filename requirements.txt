@@ -9,3 +9,4 @@ pyyaml # working with django-user-agents
 ua-parser # working with django-user-agents
 user-agents # working with django-user-agents
 django-user-agents # working with django-user-agents
+django-recaptcha #safety for login

@@ -4,24 +4,29 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
 from django.shortcuts import render, redirect
-from .forms import NewUserForm
+from .forms import NewUserForm, LoginWithCaptchaForm
 from django.contrib import messages
 from django.contrib.auth import login
 
 
 class CustomLoginView(SuccessMessageMixin, LoginView):
     template_name = "login.html"
-    authentication_form = AuthenticationForm
+    authentication_form = LoginWithCaptchaForm
     success_url = reverse_lazy("home")
-    success_message = "Login successful."
+
+    def dispatch(self, request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return redirect("home")
+        return super().dispatch(request, *args, **kwargs)
 
     def form_invalid(self, form):
-        messages.error(self.request, "Invalid username or password.")
+        # messages.error(self.request, "Invalid username or password.")
         return super().form_invalid(form)
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["login_form"] = self.get_form()
+        print(context)
         return context
 
 
@@ -37,7 +42,7 @@ class CustomRegisterView(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            messages.success(request, "Registration successful.")
+            # messages.success(request, "Registration successful.")
             return redirect("home")
         messages.error(request, "Unsuccessful registration. Invalid information.")
         return render(request, self.template_name, {"register_form": form})

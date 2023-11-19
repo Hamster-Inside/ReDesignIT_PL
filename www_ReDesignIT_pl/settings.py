@@ -33,6 +33,8 @@ ALLOWED_HOSTS = ['159.223.30.131', 'redesignit.pl', 'www.redesignit.pl']
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
+
+
 LOGGING = {
     "version": 1,  # the dictConfig format version
     "disable_existing_loggers": False,  # retain the default loggers
@@ -79,6 +81,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     'django_user_agents',
+    'django_recaptcha',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
@@ -175,7 +178,10 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'apps/login/static'),
                     ]
 if DEBUG:
     STATICFILES_DIRS.append(os.path.join(BASE_DIR, 'static'))
+    SILENCED_SYSTEM_CHECKS = ['django_recaptcha.recaptcha_test_key_error']
 else:
+    RECAPTCHA_PUBLIC_KEY = getenv('RECAPTCHA_PUBLIC_KEY')
+    RECAPTCHA_PRIVATE_KEY = getenv('RECAPTCHA_PRIVATE_KEY')
     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

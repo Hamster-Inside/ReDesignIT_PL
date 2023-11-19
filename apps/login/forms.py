@@ -1,6 +1,15 @@
 from django import forms
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
+from django_recaptcha.fields import ReCaptchaField
+from django_recaptcha.widgets import ReCaptchaV3, ReCaptchaV2Checkbox
+
+
+class LoginWithCaptchaForm(AuthenticationForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
+        api_params={'hl': 'pl'},
+        #attrs={'required_score': 0.85}
+    ))
 
 
 class NewUserForm(UserCreationForm):
