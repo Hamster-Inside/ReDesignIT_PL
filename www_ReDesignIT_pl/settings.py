@@ -33,7 +33,7 @@ ALLOWED_HOSTS = ['159.223.30.131', 'redesignit.pl', 'www.redesignit.pl']
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
-
+AUTH_USER_MODEL = 'login.CustomUser'
 
 LOGGING = {
     "version": 1,  # the dictConfig format version
@@ -82,6 +82,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'django_user_agents',
     'django_recaptcha',
+    'django_registration',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
