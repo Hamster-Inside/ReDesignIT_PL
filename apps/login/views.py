@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
@@ -7,6 +7,8 @@ from django.shortcuts import render, redirect
 from .forms import NewUserForm, LoginWithCaptchaForm
 from django.contrib import messages
 from django.contrib.auth import login
+from .models import CustomUser
+from django_registration.views import RegistrationView, ActivationView
 
 
 class CustomLoginView(SuccessMessageMixin, LoginView):
@@ -30,22 +32,39 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
         return context
 
 
-class CustomRegisterView(View):
+class TwoPhaseRegisterView(RegistrationView):
+    form_class = NewUserForm
+    success_url = None
     template_name = "register.html"
 
-    def get(self, request, *args, **kwargs):
-        form = NewUserForm()
-        return render(request, self.template_name, {"register_form": form})
+    def register(self, form):
+        pass
 
-    def post(self, request, *args, **kwargs):
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            user = form.save()
-            login(request, user)
-            # messages.success(request, "Registration successful.")
-            return redirect("home")
-        messages.error(request, "Unsuccessful registration. Invalid information.")
-        return render(request, self.template_name, {"register_form": form})
+
+class TwoPhaseActivationView(ActivationView):
+    success_url = reverse_lazy("home")
+    template_name = "django_registration/activation_failed.html"
+
+    def activate(self, *args, **kwargs):
+        pass
+
+
+# class CustomRegisterView(View):
+#     template_name = "register.html"
+#
+#     def get(self, request, *args, **kwargs):
+#         form = NewUserForm()
+#         return render(request, self.template_name, {"register_form": form})
+#
+#     def post(self, request, *args, **kwargs):
+#         form = NewUserForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             user.save()
+#
+#             return redirect("home")
+#         messages.error(request, "Unsuccessful registration. Invalid information.")
+#         return render(request, self.template_name, {"register_form": form})
 
 
 class CustomLogoutView(LogoutView):

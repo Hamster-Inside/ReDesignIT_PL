@@ -1,8 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.models import User
 from django_recaptcha.fields import ReCaptchaField
 from django_recaptcha.widgets import ReCaptchaV3, ReCaptchaV2Checkbox
+
+from apps.login.models import CustomUser
 
 
 class LoginWithCaptchaForm(AuthenticationForm):
@@ -20,7 +21,7 @@ class NewUserForm(UserCreationForm):
     ))
 
     class Meta:
-        model = User
+        model = CustomUser
         fields = ("username", "email", "password1", "password2", "captcha")
 
     def save(self, commit=True):
