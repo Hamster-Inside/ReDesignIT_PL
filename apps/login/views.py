@@ -4,11 +4,12 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
 from django.views import View
 from django.shortcuts import render, redirect
-from .forms import NewUserForm, LoginWithCaptchaForm
+from .forms import CustomRegistrationForm, LoginWithCaptchaForm
 from django.contrib import messages
 from django.contrib.auth import login
 from .models import CustomUser
-from django_registration.views import RegistrationView, ActivationView
+from django_registration.views import ActivationView
+from django_registration.backends.activation.views import RegistrationView
 
 
 class CustomLoginView(SuccessMessageMixin, LoginView):
@@ -28,43 +29,20 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["login_form"] = self.get_form()
-        print(context)
         return context
 
 
-class TwoPhaseRegisterView(RegistrationView):
-    form_class = NewUserForm
-    success_url = None
+class CustomRegistrationView(RegistrationView):
+    form_class = CustomRegistrationForm
     template_name = "register.html"
 
-    def register(self, form):
-        pass
+    # success_url = reverse_lazy("home")
 
-
-class TwoPhaseActivationView(ActivationView):
-    success_url = reverse_lazy("home")
-    template_name = "django_registration/activation_failed.html"
-
-    def activate(self, *args, **kwargs):
-        pass
-
-
-# class CustomRegisterView(View):
-#     template_name = "register.html"
-#
-#     def get(self, request, *args, **kwargs):
-#         form = NewUserForm()
-#         return render(request, self.template_name, {"register_form": form})
-#
-#     def post(self, request, *args, **kwargs):
-#         form = NewUserForm(request.POST)
-#         if form.is_valid():
-#             user = form.save()
-#             user.save()
-#
-#             return redirect("home")
-#         messages.error(request, "Unsuccessful registration. Invalid information.")
-#         return render(request, self.template_name, {"register_form": form})
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["register_form"] = self.get_form()
+        print(context)
+        return context
 
 
 class CustomLogoutView(LogoutView):

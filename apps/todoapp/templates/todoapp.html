@@ -20,7 +20,7 @@
 
         <div class="single-task-on-list border border-primary rounded-3">
             <div class="todo-flex-center-everything"><h4>{{ taskgroup.name }}</h4></div>
-            <div class="todo-flex-center-everything"><h6>Author: {{ taskgroup.author }}</h6></div>
+            <div class="todo-flex-center-everything"><h6>Author: {{ taskgroup.author.username }}</h6></div>
             <div class="taskgroup-complete todo-flex-center-everything">
                 <strong>Completed:</strong> {% if taskgroup.is_done %} Yes {% else %} No {% endif %}
             </div>

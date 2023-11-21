@@ -17,6 +17,18 @@ class CustomUserManager(UserManager):
         extra_fields.setdefault("is_superuser", False)
         return self._create_user(email, password, **extra_fields)
 
+    def create_staffuser(self, email, password):
+        """
+        Creates and saves a staff user with the given email and password.
+        """
+        user = self.create_user(
+            email,
+            password=password,
+        )
+        user.staff = True
+        user.save(using=self._db)
+        return user
+
     def create_superuser(self, email=None, password=None, **extra_fields):
         extra_fields.setdefault("is_staff", True)
         extra_fields.setdefault("is_superuser", True)
@@ -30,7 +42,8 @@ class CustomUserManager(UserManager):
 
 
 class CustomUser(AbstractUser):
-    username = models.CharField(max_length=30, default="Anonymous")
+
+    username = models.CharField(max_length=30, unique=True)
     email_confirmed = models.BooleanField(default=False)
     email = models.EmailField(unique=True, blank=True, max_length=254, verbose_name='email address')
 
@@ -39,4 +52,4 @@ class CustomUser(AbstractUser):
     REQUIRED_FIELDS = ['username']
 
     def __str__(self):
-        return self.email
+        return self.username
