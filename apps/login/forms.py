@@ -61,13 +61,10 @@ class CustomRegistrationForm(RegistrationForm):
 
     def __init__(self, *args, **kwargs):
         super(CustomRegistrationForm, self).__init__(*args, **kwargs)
-
+        if 'captcha' not in self.fields:
+            self.fields['captcha'] = self.captcha
         for name, field in self.fields.items():
             if not name == 'captcha':
                 field.widget.attrs.update({'class': 'form-control'})
 
-    def add_fields(self, form, index):
-        super().add_fields(form, index)
-        # Add captcha field only if it's not already present
-        if 'captcha' not in form.fields:
-            form.fields['captcha'] = self.captcha
+
