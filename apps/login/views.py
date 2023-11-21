@@ -1,14 +1,8 @@
-from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.urls import reverse_lazy
-from django.views import View
-from django.shortcuts import render, redirect
+from django.shortcuts import redirect
 from .forms import CustomRegistrationForm, LoginWithCaptchaForm
-from django.contrib import messages
-from django.contrib.auth import login
-from .models import CustomUser
-from django_registration.views import ActivationView
 from django_registration.backends.activation.views import RegistrationView
 
 
@@ -28,6 +22,7 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        #print(context['form'])
         context["login_form"] = self.get_form()
         return context
 
@@ -36,14 +31,10 @@ class CustomRegistrationView(RegistrationView):
     form_class = CustomRegistrationForm
     template_name = "register.html"
 
-    # success_url = reverse_lazy("home")
-
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["register_form"] = self.get_form()
-        print(context)
+        #print(context['form'])
         return context
-
 
 class CustomLogoutView(LogoutView):
     next_page = "home"

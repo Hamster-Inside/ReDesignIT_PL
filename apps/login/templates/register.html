@@ -23,7 +23,7 @@
             {% endif %}
             <form method="POST">
                 {% csrf_token %}
-                {{ register_form|crispy }}
+                {{ form|crispy|safe }}
                 <div class="text-center">
                     <button class="btn btn-primary " type="submit">Register</button>
                 </div>

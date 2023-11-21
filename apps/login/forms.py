@@ -57,33 +57,17 @@ class CustomRegistrationForm(RegistrationForm):
         model = CustomUser
         fields = ['username', 'email']
 
+    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(api_params={'hl': 'pl'}, ))
+
     def __init__(self, *args, **kwargs):
         super(CustomRegistrationForm, self).__init__(*args, **kwargs)
 
         for name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'form-control'})
+            if not name == 'captcha':
+                field.widget.attrs.update({'class': 'form-control'})
 
-
-class CustomUserCreationForm(UserCreationForm):
-    email = forms.EmailField(required=True)
-    captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox(
-        api_params={'hl': 'pl'},
-        # attrs={'required_score': 0.85}
-    ))
-
-    class Meta:
-        model = CustomUser
-        fields = ("username", "email", "password1", "password2", "captcha")
-
-    def __init__(self, *args, **kwargs):
-        super(CustomUserCreationForm, self).__init__(*args, **kwargs)
-
-        for name, field in self.fields.items():
-            field.widget.attrs.update({'class': 'input'})
-
-    def save(self, commit=True):
-        user = super(CustomRegistrationForm, self).save(commit=False)
-        user.email = self.cleaned_data['email']
-        if commit:
-            user.save()
-        return user
+    def add_fields(self, form, index):
+        super().add_fields(form, index)
+        # Add captcha field only if it's not already present
+        if 'captcha' not in form.fields:
+            form.fields['captcha'] = self.captcha
