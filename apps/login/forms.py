@@ -66,5 +66,3 @@ class CustomRegistrationForm(RegistrationForm):
         for name, field in self.fields.items():
             if not name == 'captcha':
                 field.widget.attrs.update({'class': 'form-control'})
-
-
