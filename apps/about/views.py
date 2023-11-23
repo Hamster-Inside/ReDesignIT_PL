@@ -1,11 +1,12 @@
 from django.shortcuts import render
+from django.views.generic import TemplateView
 from .models import About
 
 
-# Create your views here.
+class AboutView(TemplateView):
+    template_name = 'about.html'
 
-def about(request):
-    about_me = About.objects.first()
-    template = 'about.html'
-    context = {'about': about_me}
-    return render(request, template, context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['about'] = About.objects.first()
+        return context
