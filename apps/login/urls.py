@@ -9,6 +9,5 @@ urlpatterns = [
     path('register', views.CustomRegistrationView.as_view(), name='register'),
     path('register/', views.register_redirect, name='register_redirect'),
     path("logout", views.CustomLogoutView.as_view(), name="logout"),
-    path('activation/', include('django_registration.backends.activation.urls')),
-    #path('login/activation/', include('django.contrib.auth.urls')),
+    path('', include('django_registration.backends.activation.urls')),
 ]
