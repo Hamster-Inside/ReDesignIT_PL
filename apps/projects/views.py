@@ -1,22 +1,17 @@
-from django.shortcuts import render
-from django.http import Http404
+from django.shortcuts import render, get_object_or_404
+from django.views.generic import ListView, DetailView
 from .models import Project
 
 
-# Create your views here.
-
-def projects(request):
-    my_projects = Project.objects.all().order_by("pk")
-    template = 'projects.html'
-    context = {'my_projects': my_projects}
-    return render(request, template, context)
+class ProjectsListView(ListView):
+    model = Project
+    template_name = 'projects.html'
+    context_object_name = 'my_projects'
+    ordering = ['pk']
 
 
-def project_detail(request, slug):
-    template = 'project-detail.html'
-    try:
-        picked_project = Project.objects.get(slug=slug)
-        context = {'project': picked_project}
-    except Project.DoesNotExist:
-        raise Http404("Project does not exist")
-    return render(request, template, context)
+class ProjectDetailView(DetailView):
+    model = Project
+    template_name = 'project-detail.html'
+    context_object_name = 'project'
+    slug_url_kwarg = 'slug'
