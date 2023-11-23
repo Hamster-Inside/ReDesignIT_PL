@@ -16,25 +16,11 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
             return redirect("home")
         return super().dispatch(request, *args, **kwargs)
 
-    def form_invalid(self, form):
-        # messages.error(self.request, "Invalid username or password.")
-        return super().form_invalid(form)
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #print(context['form'])
-        context["login_form"] = self.get_form()
-        return context
-
 
 class CustomRegistrationView(RegistrationView):
     form_class = CustomRegistrationForm
     template_name = "register.html"
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #print(context['form'])
-        return context
 
 class CustomLogoutView(LogoutView):
     next_page = "home"
