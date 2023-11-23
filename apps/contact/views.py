@@ -1,13 +1,12 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-from django.template import loader
+from django.views.generic import TemplateView
 from .models import Contact
 
 
-# Create your views here.
+class ContactView(TemplateView):
+    template_name = 'contact.html'
 
-def contact(request):
-    contact_me = Contact.objects.first()
-    template = 'contact.html'
-    context = {'contact_me': contact_me}
-    return render(request, template, context)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['contact_me'] = Contact.objects.first()
+        return context
