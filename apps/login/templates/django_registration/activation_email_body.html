@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Activation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            word-wrap: break-word;  /* Add this to wrap long URLs */
+        }
+        .activation-link {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            overflow: hidden;  /* Add this to hide overflow */
+            white-space: nowrap;  /* Add this to prevent line breaks */
+            text-overflow: ellipsis;  /* Add this to show ellipsis for overflow */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="color: #3498db;">Account Activation</h2>
+        <p>Hi {{ user.username }},</p>
+        <p>You registered for an account, but you need to activate it within 7 days. To do that, please click the link below:</p>
+        <a href="{{scheme}}://{{request.get_host}}{%url 'django_registration_activate' activation_key%}" class="activation-link">Activate Your Account</a>
+        <p>If the above button doesn't work, you can also copy and paste the following link into your browser:</p>
+        <p>{{scheme}}://{{request.get_host}}{%url 'django_registration_activate' activation_key%}</p>
+        <p>Thanks!</p>
+    </div>
+
+</body>
+</html>
+

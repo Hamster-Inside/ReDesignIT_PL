@@ -25,6 +25,7 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
 class CustomRegistrationView(RegistrationView):
     form_class = CustomRegistrationForm
     template_name = "register.html"
+    email_body_template = "django_registration/activation_email_body.html"
 
     def send_activation_email(self, user):
         activation_key = self.get_activation_key(user)
@@ -50,7 +51,10 @@ class CustomRegistrationView(RegistrationView):
         port = getenv('PORT')
         smtp_server = getenv('SMTP_SERVER')
         with EmailSender(port, smtp_server, credentials, ssl_enabled) as connection:
-            connection.send_mail(user.email, subject, message)
+            try:
+                connection.send_email(user.email, subject, message)
+            except Exception as e:
+                print(f"Error sending activation email: {e}")
 
 
 class CustomLogoutView(LogoutView):

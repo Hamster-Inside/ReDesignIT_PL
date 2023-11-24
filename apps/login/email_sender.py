@@ -32,9 +32,10 @@ class EmailSender:
 
         return self
 
-    def send_mail(self, recipient, subject, message_content):
+    def send_email(self, recipient, subject, message_content):
         self.msg['To'] = recipient
         self.msg.set_content(message_content)
+        self.msg.add_alternative(message_content, subtype='html')
         self.msg['Subject'] = subject
 
         self.connection.send_message(self.msg)
