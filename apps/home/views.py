@@ -1,7 +1,7 @@
 import logging
 from django.views.generic import TemplateView
 
-from .models import ProgrammingLanguage, Framework, WebProfile
+from .models import ProgrammingLanguage, Framework, WebProfile, MyApp
 
 logger = logging.getLogger(__name__)
 
@@ -14,6 +14,7 @@ class HomeView(TemplateView):
         context['programming_languages'] = ProgrammingLanguage.objects.all()
         context['frameworks'] = Framework.objects.all()
         context['social_profiles'] = WebProfile.objects.all()
+        context['apps'] = MyApp.objects.all()
 
         user_agent = self.request.user_agent
         logger.info(f' | Browser: {user_agent.browser.family} | '

@@ -28,9 +28,9 @@ class WebProfile(models.Model):
         return self.profile_name
 
 
-class MyApps(models.Model):
-    app_name = models.CharField(max_length=50)
-    app_url = models.CharField(max_length=300)
+class MyApp(models.Model):
+    name = models.CharField(max_length=50)
+    url = models.CharField(max_length=300)
 
     def __str__(self):
-        return self.app_name
+        return self.name

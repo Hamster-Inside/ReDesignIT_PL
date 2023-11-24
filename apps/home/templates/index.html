@@ -20,7 +20,7 @@
                 </div>
                 {% endfor %}
             </div>
-            <h4>Frameworks used to build this site:</h4>
+            <h4 class="mt-2">Frameworks used to build this site:</h4>
             <div class="equal-row-height">
                 {% for framework in frameworks %}
                 <div class="languages-frameworks-div rounded-3 d-flex align-items-center justify-content-center">
@@ -62,6 +62,18 @@
                         <img src="{{social_profile.image.url}}" alt="{{social_profile.profile_name}}">
                     </a>
                 </div>
+                {% endfor %}
+            </div>
+            <h4 class="mt-2">
+                My APPS:
+            </h4>
+            <div class="equal-row-height">
+                {% for app in apps %}
+                <a href="{{app.url}}" style="text-decoration:none">
+                    <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center w-100">
+                        {{app.name}}
+                    </button>
+                </a>
                 {% endfor %}
             </div>
         </div>
