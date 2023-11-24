@@ -26,3 +26,11 @@ class WebProfile(models.Model):
 
     def __str__(self):
         return self.profile_name
+
+
+class MyApps(models.Model):
+    app_name = models.CharField(max_length=50)
+    app_url = models.CharField(max_length=300)
+
+    def __str__(self):
+        return self.app_name
