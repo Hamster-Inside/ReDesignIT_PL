@@ -10,9 +10,9 @@
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
     <div class="todo-taskgroup-title-author">
         <div class="todoapp-taskgroup-name todo-flex-center-everything">
-            <h1>Your Projects (TaskGroups)</h1>
+            <h1>Your Projects</h1>
             <div class="todo-flex-center-everything">
-                <a href="{% url 'taskgroup_create' %}"><h2>Add TaskGroup</h2></a></div>
+                <a href="{% url 'taskgroup_create' %}"><h2>Add Project</h2></a></div>
         </div>
     </div>
     <div class="todoapp-taskgroup-tasks">
@@ -29,7 +29,7 @@
                     <a href="{% url 'taskgroup_detail' taskgroup.slug %}">Read more </a>
                 </div>
                 <div class="todo-flex-center-everything p-2">
-                    <a href="{% url 'taskgroup_delete' taskgroup.slug %}">Delete taskgroup </a>
+                    <a href="{% url 'taskgroup_delete' taskgroup.slug %}">Delete</a>
                 </div>
             </div>
         </div>

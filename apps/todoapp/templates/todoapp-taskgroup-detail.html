@@ -8,34 +8,43 @@
 
 {% block content %}
 <div class="border border-primary rounded-3 my-standard-background todoapp-main-box">
-    <p>Completed: {% if taskgroup.is_done %} Yes {% else %} No {% endif %}</p>
-    <a href="{% url 'taskgroup_update' taskgroup.slug %}">Edit Project (TaskGroup)</a>
-    <a href="{% url 'taskgroup_delete' taskgroup.slug %}">Delete Project (TaskGroup)</a>
-    <h1>Your Tasks</h1>
-    <a href="{% url 'task_create' taskgroup.slug %}">Add Task</a>
-    {% for task in tasks %}
-    <div>
-        <div>
-            <h5>{{ task.title }}</h5>
-            <p>{{ task.description|truncatechars:50 }}</p>
-            <p>
-                <strong>Completed:</strong>
-                {% if task.is_done %}
-                Yes
-                {% else %}
-                No
-                {% endif %}
-            </p>
-            <a href="{% url 'task_detail' taskgroup.slug task.slug %}">
-                Read more
-            </a>
-            <a href="{% url 'task_delete' taskgroup.slug task.slug %}">
-                Delete task
-            </a>
+    <div class="d-flex justify-content-center align-items-center">
+        <a href="{% url 'taskgroup_list'%}">
+            <button class="btn btn-dark"><strong> <- Go Back </strong></button>
+        </a></div>
+    <div class="todo-taskgroup-title-author">
+        <div class="todoapp-taskgroup-name todo-flex-center-everything">
+            <h1>Project: {{taskgroup.slug}}</h1>
+            <div class="cud-of-taskgroup mb-3">
+                <div><a href="{% url 'task_create' taskgroup.slug %}"><button class="btn btn-primary">Add Task</button></a></div>
+                <div><a href="{% url 'taskgroup_update' taskgroup.slug %}"><button class="btn btn-info">Edit Project</button></a></div>
+                <div><a href="{% url 'taskgroup_delete' taskgroup.slug %}"><button class="btn btn-danger">Delete Project</button></a></div>
+            </div>
         </div>
     </div>
-    {% empty %}
-    <h3>No tasks yet.</h3>
-    {% endfor %}
+
+
+    <div class="todoapp-taskgroup-tasks">
+        {% for task in tasks %}
+
+        <div class="single-task-on-list border border-primary rounded-3">
+            <div class="todo-flex-center-everything"><h4>{{ task.title }}</h4></div>
+            <div class="todo-flex-center-everything"><h6>{{ task.description|truncatechars:50 }}</h6></div>
+            <div class="taskgroup-complete todo-flex-center-everything">
+                <strong>Completed:</strong> {% if task.is_done %} Yes {% else %} No {% endif %}
+            </div>
+            <div class="taskgroup-read-delete">
+                <div class="todo-flex-center-everything p-2">
+                    <a href="{% url 'task_detail' taskgroup.slug task.slug %}">Read more</a>
+                </div>
+                <div class="todo-flex-center-everything p-2">
+                    <a href="{% url 'task_delete' taskgroup.slug task.slug %}">Delete task</a>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <h3>No tasks yet.</h3>
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

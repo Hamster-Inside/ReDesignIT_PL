@@ -72,4 +72,12 @@ padding: 20px;
     }
 }
 
+.cud-of-taskgroup{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    width: 100%;
+}
 
