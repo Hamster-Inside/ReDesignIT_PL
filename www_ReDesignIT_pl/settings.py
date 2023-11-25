@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = getenv('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = getenv('DEBUG')
+DEBUG = os.getenv('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ['159.223.30.131', 'redesignit.pl', 'www.redesignit.pl']
 
 # Application definition
@@ -37,6 +37,10 @@ AUTH_USER_MODEL = 'login.CustomUser'
 ACCOUNT_ACTIVATION_DAYS = 7
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 REGISTRATION_OPEN = getenv('REGISTRATION_OPEN')
+
+SECURE_SSL_REDIRECT = True
+SESSION_COOKIE_SECURE = True
+CSRF_COOKIE_SECURE = True
 
 LOGGING = {
     "version": 1,  # the dictConfig format version
