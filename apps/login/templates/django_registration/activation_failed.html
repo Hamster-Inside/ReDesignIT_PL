@@ -9,7 +9,9 @@
 {% block content %}
 
 
-Seems you are already an active user
+{% if activation_error %}
+    <p class="error">{{ activation_error.message }}</p>
+{% endif %}
 
 
 {% endblock %}

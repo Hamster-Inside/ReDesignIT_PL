@@ -1,14 +1,16 @@
 from collections import namedtuple
 from os import getenv
+from django_registration.exceptions import ActivationError
 from dotenv import load_dotenv
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 from .forms import CustomRegistrationForm, LoginWithCaptchaForm
-from django_registration.backends.activation.views import RegistrationView
+from django_registration.backends.activation.views import RegistrationView, ActivationView
 from .email_sender import EmailSender
+from django.utils.translation import gettext_lazy as _
 
 
 class CustomLoginView(SuccessMessageMixin, LoginView):
@@ -55,6 +57,23 @@ class CustomRegistrationView(RegistrationView):
                 connection.send_email(user.email, subject, message)
             except Exception as e:
                 print(f"Error sending activation email: {e}")
+
+
+class CustomActivationView(ActivationView):
+    ALREADY_ACTIVATED_MESSAGE = _("Konto jest już aktywne. Zaloguj się.")
+    BAD_USERNAME_MESSAGE = _("Błąd aktywacji konta. Skontaktuj się z administratorem.")
+    EXPIRED_MESSAGE = _("Czas aktywacji minął. Zarejestruj się ponownie.")
+    INVALID_KEY_MESSAGE = _("Klucz jest niepoprawny. Skontaktuj się z administratorem.")
+
+    def activate(self, *args, **kwargs):
+        try:
+            username = self.validate_key(kwargs.get("activation_key"))
+            user = self.get_user(username)
+            user.is_active = True
+            user.save()
+            return user
+        except ActivationError as exc:
+            raise ActivationError(exc.message, exc.code, exc.params)
 
 
 class CustomLogoutView(LogoutView):

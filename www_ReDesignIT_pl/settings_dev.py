@@ -34,10 +34,10 @@ LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 
 AUTH_USER_MODEL = 'login.CustomUser'
-ACCOUNT_ACTIVATION_DAYS = 7
+ACCOUNT_ACTIVATION_DAYS = 1/86400
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 REGISTRATION_OPEN = getenv('REGISTRATION_OPEN')
-
+REGISTRATION_SALT = getenv('REGISTRATION_SALT')
 
 LOGGING = {
     "version": 1,  # the dictConfig format version
