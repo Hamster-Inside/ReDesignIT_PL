@@ -64,15 +64,22 @@ class CustomActivationView(ActivationView):
     BAD_USERNAME_MESSAGE = _("Błąd aktywacji konta. Skontaktuj się z administratorem.")
     EXPIRED_MESSAGE = _("Czas aktywacji minął. Zarejestruj się ponownie.")
     INVALID_KEY_MESSAGE = _("Klucz jest niepoprawny. Skontaktuj się z administratorem.")
+    CONFIRMED_USER_DEACTIVATED = _("Konto zostało zawieszone. Skontaktuj się z administratorem")
 
     def activate(self, *args, **kwargs):
         try:
             username = self.validate_key(kwargs.get("activation_key"))
             user = self.get_user(username)
+
+            if user.email_confirmed and not user.is_active:
+                raise ActivationError(message=self.CONFIRMED_USER_DEACTIVATED, code="deactivated_user")
+
+            user.email_confirmed = True
             user.is_active = True
             user.save()
             return user
         except ActivationError as exc:
+            # TODO add my own context based on error
             raise ActivationError(exc.message, exc.code, exc.params)
 
 
