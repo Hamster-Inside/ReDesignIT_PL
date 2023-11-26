@@ -3,15 +3,15 @@
 {% load static %}
 
 {% block styles %}
-<!--TODO-->
+<link rel="stylesheet" href="{% static '/css/login-styles.css' %}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
 
-
-{% if activation_error %}
-    <p class="error">{{ activation_error.message }}</p>
-{% endif %}
-
+<div class="border border-primary rounded-3 py-4 my-standard-background align-items-center justify-content-center" style="min-height: 100px;">
+        {% if activation_error %}
+        <p class="text-center registration-text">{{ activation_error.message }}</p>
+        {% endif %}
+</div>
 
 {% endblock %}

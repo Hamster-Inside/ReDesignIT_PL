@@ -3,14 +3,18 @@
 {% load static %}
 
 {% block styles %}
-<!--TODO-->
+<link rel="stylesheet" href="{% static '/css/login-styles.css' %}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
 
+<div class="border border-primary rounded-3 py-4 my-standard-background align-items-center justify-content-center"
+     style="min-height: 100px;">
+    <p class="text-center registration-text"> Your registration was successful</p>
+    <p></p>
+    <p class="text-center registration-text">Check your email</p>
 
-Your registration was successful
+</div>
 
-Check your email
 
 {% endblock %}
