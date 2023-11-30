@@ -11,3 +11,4 @@ user-agents # working with django-user-agents
 django-user-agents # working with django-user-agents
 django-recaptcha #safety for login
 django-registration #two-phase registration
+django-ipware #to receive client's IP - make sure no spamming bots
