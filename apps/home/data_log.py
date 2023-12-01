@@ -1,7 +1,10 @@
 from ipware import get_client_ip
+import logging
+
+logger = logging.getLogger("HOME")
 
 
-def log_to_file(request, logger):
+def log_to_file(request):
     ip_info = []
 
     client_ip, is_routable = get_client_ip(request)
@@ -17,7 +20,7 @@ def log_to_file(request, logger):
     user_agent = request.user_agent
 
     logger.info(f' | Browser: {user_agent.browser.family} | '
-                f'From IP: {' | '.join(map(str, ip_info))} | '
+                f'From IP: {" | ".join(map(str, ip_info))} | '
                 f'Version: {user_agent.browser.version_string} | '
                 f'Device: {user_agent.device} | '
                 f'OS: {user_agent.os.family} '

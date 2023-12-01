@@ -50,8 +50,8 @@ LOGGING = {
         },
     },
     "loggers": {
-        "apps.home.views": {
-            "level": "DEBUG",
+        "HOME": {
+            "level": "INFO",
             "handlers": ["file"],
         },
     },
