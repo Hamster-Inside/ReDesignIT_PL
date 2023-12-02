@@ -10,6 +10,7 @@
 @media (max-width: 650px) {
   .content-home {
     grid-template-columns: 1fr;
+    row-gap: 30px;
   }
 
   .div-main-left-section {

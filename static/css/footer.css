@@ -1,18 +1,22 @@
 .my-footer{
-  height: 80px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+    height: 80px;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 
 }
-
+.mid-foot{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-radius: 6px;
+}
 .foot{
-height: 100%;
-font-size: 80%;
-text-align: center;
-line-height: 30px;
+    height: 60px;
+    font-size: 80%;
+    text-align: center;
+    line-height: 30px;
 }
 
 .digitalocean_ad{
-height: 100%;
+    height: 100%;
 }

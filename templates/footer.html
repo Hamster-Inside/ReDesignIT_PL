@@ -3,11 +3,13 @@
 <link rel="stylesheet" href="{% static '/css/footer.css' %}" type="text/css"/>
 {% endblock %}
 
-<footer class="my-footer bg-light">
-    <div class="digitalocean_ad"><a
-            href="https://www.digitalocean.com/?refcode=54ee60ac54c4&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
-            src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
-            alt="DigitalOcean Referral Badge"/></a>
+<footer class="my-footer bg-transparent d-flex align-items-center justify-content-center">
+    <div class="mid-foot bg-light d-flex align-items-center justify-content-center gap-3 mx-auto">
+        <div class="digitalocean_ad ms-0"><a
+                href="https://www.digitalocean.com/?refcode=54ee60ac54c4&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img
+                src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg"
+                alt="DigitalOcean Referral Badge"/></a>
+        </div>
+        <div class="foot bg-light d-flex justify-content-center align-items-center mx-3"> &copy; {% now "Y" %} ReDesignIT. All rights reserved.</div>
     </div>
-    <div class="foot"> &copy; {% now "Y" %} ReDesignIT. All rights reserved.</div>
 </footer>
