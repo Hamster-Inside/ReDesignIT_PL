@@ -4,10 +4,20 @@
 
 {% block styles %}
 <link rel="stylesheet" href="{% static '/css/projects-styles.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static '/css/slick.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static '/css/slick-theme.css' %}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
-
+<div class="your-class multiple-items">
+    <div>your content</div>
+    <div>your content</div>
+    <div>your content</div>
+    <div>your content</div>
+    <div>your content</div>
+    <div>your content</div>
+    <div>your content</div>
+</div>
 <div class="my-grid-projects">
     {% for project in my_projects %}
     <div class="border border-primary rounded-3 my-standard-background">
@@ -27,4 +37,13 @@
     {% endfor %}
 </div>
 
+<script type="text/javascript" src="{% static '/js/slick.min.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/slick-multiple.js' %}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $('.your-class').slick({
+        setting-name: setting-value
+      });
+    });
+</script>
 {% endblock %}
