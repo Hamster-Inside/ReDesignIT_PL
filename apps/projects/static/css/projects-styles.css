@@ -1,116 +1,158 @@
+/* Styles for .my-grid-projects */
 .my-grid-projects {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: 1fr 4fr;
-    width: 100%;
-    grid-row-gap: 10px;
-    padding-left: 30px;
-    padding-right: 30px;
-}
-.my-skills{
-max-width: 1000px;
-}
-.multiple-items{
-max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1000px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
-.my-grid-project-detail{
-    display: grid;
-    grid-template-rows: 1fr auto;
-    grid-row-gap: 10px;
-    margin-left: 30px;
-    margin-right: 30px;
+/* Styles for .slick-projects */
+.slick-projects {
+  width: 100%;
+  max-width: 800px;
+  max-height: 400px;
+  min-height: 400px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+.multiple-items {
+  width: 80%;
+  height: 200px;
+}
+.slick-slider{
+display: flex;
 }
 
-.div-project-detail-summary{
-text-align: justify;
+@media (max-width: 500px) {
+  .multiple-items {
+    max-width: 300px;
+  }
 }
-
-.div-project-detail {
-    padding: 10px 10px 10px 10px;
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-row-gap: 10px;
-}
-
-
-.full-vh-vw-div {
-width: 100%;
+.slick-list{
 height: 100%;
 }
-
-.projects-div {
-
-    max-height: 250px;
-    min-height: 250px;
+.slick-track {
+  height: 100%;
+  display: flex !important;
 }
-.project-div-single{
-display: grid;
- height: 100%;
-    grid-template-columns: 1fr;
-    grid-auto-rows: 2fr 1fr;
-    grid-row-gap: 10px;
+
+.slick-track {
+  display: flex;
 }
-.slick-slider, .slick-list, .slick-track {
+.slick-track .slick-slide {
+  display: flex;
+  height: auto;
+}
+
+/* Styles for .my-skills */
+.my-skills {
+  display: flex;
+  max-width: 1000px;
+}
+
+@media (max-width: 500px) {
+  .multiple-items {
+    max-width: 300px;
+  }
+}
+
+/* Styles for .my-grid-project-detail */
+.my-grid-project-detail {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  grid-row-gap: 10px;
+  margin-left: 30px;
+  margin-right: 30px;
+}
+
+/* Styles for .div-project-detail-summary */
+.div-project-detail-summary {
+  text-align: justify;
+}
+
+/* Styles for .div-project-detail */
+.div-project-detail {
+  padding: 10px 10px 10px 10px;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-row-gap: 10px;
+}
+
+/* Styles for .full-vh-vw-div */
+.full-vh-vw-div {
+  width: 100%;
   height: 100%;
 }
 
-.project-title{
-display:flex;
-justify-content:center;
+/* Styles for .projects-div */
+.projects-div {
+  display: flex !important;
+  flex-direction: column;
+  height: 100px;
 }
-.project-title h4{
+
+/* Styles for .project-title */
+.project-title {
+  display: flex;
+  flex: 30;
+  justify-content: center;
+}
+
+.project-title h4 {
   flex: 1;
 }
 
-.project-image{
-  flex: 3;
+/* Styles for .project-image */
+.project-image {
   display: flex;
+  min-height: 70%;
   align-items: center;
   justify-content: center;
-  max-height: 100%;
   overflow: hidden;
   object-fit: contain;
 }
 
-.project-image img{
+.project-image img {
   max-height: 100%;
   max-width: 100%;
   object-fit: cover;
 }
 
-.projects-div:hover{
-    background-color:rgba(93,208,81,0.9);
-    cursor: pointer;
+/* Styles for .projects-div:hover */
+.projects-div:hover {
+  background-color: rgba(93, 208, 81, 0.9);
+  cursor: pointer;
 }
 
-.div-link-to-source{
-    display:inline-block;
-    color:#444;
-    border:1px solid #CCC;
-    background:#DDD;
-    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
-    cursor:pointer;
-    vertical-align:middle;
-    padding: 5px;
-    text-align: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-
-    }
+/* Styles for .div-link-to-source */
+.div-link-to-source {
+  display: inline-block;
+  color: #444;
+  border: 1px solid #ccc;
+  background: #ddd;
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  vertical-align: middle;
+  padding: 5px;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 
 .div-link-to-source:hover {
   background-color: yellow;
-  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+  box-shadow: 0 0 5px -1px rgba(0, 0, 0, 0.6);
 }
 
-.div-connected-links{
-    max-width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-
+/* Styles for .div-connected-links */
+.div-connected-links {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
-.div-link-to-source img{
-    max-width: 80%;
-    height: auto;
+
+.div-link-to-source img {
+  max-width: 80%;
+  height: auto;
 }

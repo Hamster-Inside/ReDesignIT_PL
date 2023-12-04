@@ -4,6 +4,16 @@ $('.multiple-items').slick({
   slidesToShow: 3,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 3000,
+  autoplaySpeed: 1000,
   centerMode: true,
+});
+
+$(window).resize(function() {
+  var projects = document.querySelector(".multiple-items");
+  if ($(window).width() < 900) {
+    $(projects).slick('slickSetOption', 'slidesToShow', 1);
+  }
+  else {
+    $(projects).slick('slickSetOption', 'slidesToShow', 3);
+  }
 });
