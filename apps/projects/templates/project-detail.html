@@ -17,7 +17,7 @@
             <img src="{% static '/images/project-puzzle-pieces.jpg' %}">
             {% endif %}
         </div>
-        <div class="project-title">
+        <div class="project-title d-flex text-center justify-content-center align-items-center">
             <h4>{{ project.project_name }}</h4>
         </div>
     </div>
@@ -38,7 +38,7 @@
             </div>
             {% endif %}
         </div>
-        <div class="div-project-detail-summary">
+        <div class="div-project-detail-summary px-4">
             {{project.summary|linebreaks}}
         </div>
 
