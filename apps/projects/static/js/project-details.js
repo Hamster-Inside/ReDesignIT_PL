@@ -1,5 +1,26 @@
 // project-details.js
-function showProjectDetails(name, summary, imageUrl, githubUrl, youtubeUrl) {
+
+function createLinkToSource(url, logoPath) {
+    return url ? `
+        <div class="div-link-to-source rounded-3 d-flex align-items-center">
+            <a href="${url}" target="_blank">
+                <img src="${logoPath}">
+            </a>
+        </div>
+    ` : '';
+}
+function showProjectDetails(projectElement) {
+    var name = projectElement.dataset.name;
+    var summary = projectElement.dataset.summary;
+    var imageUrl = projectElement.dataset.image;
+    var githubUrl = projectElement.dataset.githubUrl;
+    var githubLogoPath = projectElement.dataset.githubLogoPath;
+    var youtubeUrl = projectElement.dataset.youtubeUrl;
+    var youtubeLogoPath = projectElement.dataset.youtubeLogoPath;
+
+    var githubLink = createLinkToSource(githubUrl, githubLogoPath);
+    var youtubeLink = createLinkToSource(youtubeUrl, youtubeLogoPath);
+
     var detailsHtml = `
         <div class="div-project-detail">
             <div class="project-image">
@@ -11,25 +32,14 @@ function showProjectDetails(name, summary, imageUrl, githubUrl, youtubeUrl) {
         </div>
         <div class="div-project-detail">
             <div class="div-connected-links align-items-center">
-                ${githubUrl ? `
-                    <div class="div-link-to-source rounded-3 d-flex align-items-center">
-                        <a href="${githubUrl}" target="_blank">
-                            <img src="{% static '/images/github-logo.png' %}">
-                        </a>
-                    </div>
-                ` : ''}
-                ${youtubeUrl ? `
-                    <div class="div-link-to-source rounded-3 d-flex align-items-center">
-                        <a href="${youtubeUrl}" target="_blank">
-                            <img src="{% static '/images/youtube-logo.png' %}">
-                        </a>
-                    </div>
-                ` : ''}
+                ${githubLink}
+                ${youtubeLink}
             </div>
             <div class="div-project-detail-summary px-4">
                 ${summary}
             </div>
         </div>
     `;
+
     document.getElementById('project-details').innerHTML = detailsHtml;
 }

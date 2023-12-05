@@ -14,7 +14,14 @@
         <div class="multiple-items mx-auto">
             {% for project in my_projects %}
             <div class="projects-div mx-2 border border-primary rounded-3 my-standard-background"
-                 onclick="window.location = '{{project.slug}}'">
+                 data-name="{{ project.project_name }}"
+                 data-summary="{{ project.summary|linebreaks }}"
+                 data-image="{% if project.image %}{{ project.image.url }}{% else %}{% static '/images/project-puzzle-pieces.jpg' %}{% endif %}"
+                 data-github-url="{% if project.github_url %}{{ project.github_url }}{% else %}{% endif %}"
+                 data-github-logo-path="{% static '/images/github-logo.png' %}"
+                 data-youtube-url="{% if project.youtube_url %}{{ project.youtube_url }}{% endif %}"
+                 data-youtube-logo-path="{% static '/images/youtube-logo.png' %}"
+                 onclick="showProjectDetails(this)">
                 <div class="project-image m-auto">
                     {% if project.image %}
                     <img src="{{project.image.url}}">
@@ -29,11 +36,12 @@
             {% endfor %}
         </div>
     </div>
-    <div class="my-skills my-standard-background mt-4 mx-4">
-        WHAT CAN I DO IN SLIDE SHOW
+    <div id="project-details" class="my-grid-project-detail my-standard-background mt-4 mx-4">
+
     </div>
 </div>
 
 <script type="text/javascript" src="{% static '/js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/slick-multiple.js' %}"></script>
+<script type="text/javascript" src="{% static '/js/project-details.js' %}"></script>
 {% endblock %}

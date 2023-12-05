@@ -11,17 +11,14 @@
 .slick-projects {
   width: 100%;
   max-width: 800px;
-  max-height: 400px;
-  min-height: 400px;
+  max-height: 200px;
+  min-height: 200px;
   padding-left: 30px;
   padding-right: 30px;
 }
 .multiple-items {
   width: 80%;
   height: 200px;
-}
-.slick-slider{
-display: flex;
 }
 
 @media (max-width: 500px) {
@@ -35,20 +32,6 @@ height: 100%;
 .slick-track {
   height: 100%;
   display: flex !important;
-}
-
-.slick-track {
-  display: flex;
-}
-.slick-track .slick-slide {
-  display: flex;
-  height: auto;
-}
-
-/* Styles for .my-skills */
-.my-skills {
-  display: flex;
-  max-width: 1000px;
 }
 
 @media (max-width: 500px) {
