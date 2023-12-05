@@ -9,6 +9,7 @@ body {
   background-image: url('/static/images/background-redesignit.png');
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   font-family: 'Roboto', sans-serif;
 }
 
