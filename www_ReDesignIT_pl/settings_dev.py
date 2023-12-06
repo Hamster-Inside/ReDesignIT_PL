@@ -98,6 +98,7 @@ THUMBNAIL_PROCESSORS = (
 # size is "width x height"
 IMAGE_CROPPING_THUMB_SIZE = (500, 500)
 IMAGE_CROPPING_SIZE_WARNING = True
+IMAGE_CROPPING_BACKEND = 'image_cropping.backends.easy_thumbs.EasyThumbnailsBackend'
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
