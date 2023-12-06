@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 from os import getenv
 from dotenv import load_dotenv
+from easy_thumbnails.conf import Settings as thumbnail_settings
 
 load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -90,7 +91,18 @@ INSTALLED_APPS = [
     'django_user_agents',
     'django_recaptcha',
     'django_registration',
+    'easy_thumbnails',
+    'image_cropping',
 ]
+
+THUMBNAIL_PROCESSORS = (
+    'image_cropping.thumbnail_processors.crop_corners',
+) + thumbnail_settings.THUMBNAIL_PROCESSORS
+# size is "width x height"
+IMAGE_CROPPING_THUMB_SIZE = (500, 500)
+IMAGE_CROPPING_SIZE_WARNING = True
+
+
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
