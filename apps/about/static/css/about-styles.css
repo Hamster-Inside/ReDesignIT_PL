@@ -1,6 +1,13 @@
-.div-about{
-text-align: justify;
+.div-about-main{
 padding: 30px;
 margin-left: 30px;
 margin-right: 30px;
+}
+
+.div-about{
+text-align: justify;
+}
+
+.div-skills{
+
 }
