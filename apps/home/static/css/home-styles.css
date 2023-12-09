@@ -34,11 +34,13 @@ margin: 0 auto;
 }
 
 .profiles-div img{
+max-height: 30px;
 max-width: 80%;
 height: auto;
 }
 
-.main-left-section-content img{
+.languages-frameworks-div img{
+max-height: 30px;
 max-width: 80%;
 height: auto;
 }
@@ -80,6 +82,7 @@ height: auto;
     padding: 5px;
     text-align: center;
 }
+
 
 .profiles-div:hover {
   background-color: yellow;
