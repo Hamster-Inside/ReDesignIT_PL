@@ -22,6 +22,7 @@
                     {% else %}
                     <div class="carousel-item" data-bs-interval="3000">
                         {% endif %}
+                        <h3 class="text-center bg-secondary mb-0 rounded-top">{{img.title}}</h3>
                         <img src=" {% cropped_thumbnail img 'cropping' %}" class="d-block w-100" alt="{{ img.title }}">
                     </div>
                     {% endfor %}
@@ -41,4 +42,5 @@
 
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
