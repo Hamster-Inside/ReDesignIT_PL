@@ -2,6 +2,7 @@ from os import getenv
 from dotenv import load_dotenv
 import json
 import requests
+from data_log import simple_log
 
 
 def get_user_location_data(user_ip):
@@ -13,7 +14,7 @@ def get_user_location_data(user_ip):
         response = requests.get(api_url)
     except requests.exceptions.RequestException as e:
         response = None
-        # TODO log the error after
+        simple_log(f'Problem with trying to get api_url = http://api.ipstack.com/{user_ip}')
 
     data = response.json()
 

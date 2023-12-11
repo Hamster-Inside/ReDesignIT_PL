@@ -17,3 +17,7 @@ def log_to_file(client_ip, user_agent):
                 f'Device: {user_agent.device} | '
                 f'OS: {user_agent.os.family} '
                 f'{user_agent.os.version_string}')
+
+
+def simple_log(message):
+    logger.info(message)
