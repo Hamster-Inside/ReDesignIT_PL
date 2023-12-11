@@ -13,6 +13,9 @@
         {{about.about_text|linebreaks}}
     </div>
     <div class="div-skills">
+        {% if images %}
+        <h1 class="text-center">My skills:</h1><br>
+        {% endif %}
         <div id="carouselAbout" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <div class="carousel-inner">
                 {% if images %}
@@ -22,7 +25,8 @@
                     {% else %}
                     <div class="carousel-item" data-bs-interval="3000">
                         {% endif %}
-                        <h3 class="text-center bg-secondary mb-0 rounded-top">{{img.title}}</h3>
+
+                        <h2 class="text-center bg-secondary mb-0 rounded-top">{{img.title}}</h2>
                         <img src=" {% cropped_thumbnail img 'cropping' %}" class="d-block w-100" alt="{{ img.title }}">
                     </div>
                     {% endfor %}
