@@ -1,8 +1,7 @@
 from os import getenv
 from dotenv import load_dotenv
-import json
 import requests
-from data_log import simple_log
+from .data_log import simple_log
 
 
 def get_user_location_data(user_ip):
@@ -17,17 +16,7 @@ def get_user_location_data(user_ip):
         simple_log(f'Problem with trying to get api_url = http://api.ipstack.com/{user_ip}')
 
     data = response.json()
-
-    if is_valid_json(data):
-        to_get_data = ['continent_name', 'country_name', 'city']
-        for item in to_get_data:
-            loc_data[item] = data.get(item, "Not Found")
+    to_get_data = ['continent_name', 'country_name', 'city']
+    for item in to_get_data:
+        loc_data[item] = data.get(item, "Not Found") if data.get(item) is not None else "Not Found"
     return loc_data
-
-
-def is_valid_json(json_data):
-    try:
-        json_object = json.loads(json_data)
-        return True
-    except json.JSONDecodeError:
-        return False

@@ -2,7 +2,7 @@ from django.views.generic import TemplateView
 from .data_log import log_to_file
 from .models import ProgrammingLanguage, Framework, WebProfile, MyApp, Statistic
 from ipware import get_client_ip
-from loc_data import get_user_location_data
+from .loc_data import get_user_location_data
 
 
 class HomeView(TemplateView):
