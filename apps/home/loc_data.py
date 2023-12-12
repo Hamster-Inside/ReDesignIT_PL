@@ -9,7 +9,7 @@ def get_user_location_data(user_ip):
     # api_key = getenv('IPSTACK_API_KEY') # ipstack less accurate info
     api_key = getenv('IPINFO_API_KEY')
     # api_url = f'http://api.ipstack.com/{user_ip}?access_key={api_key}'
-    api_url = f'ipinfo.io/{user_ip}?token={api_key}'
+    api_url = f'ipinfo.io/{user_ip}?token={api_key}/json'
     loc_data = {}
     try:
         response = requests.get(api_url)
