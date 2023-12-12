@@ -5,33 +5,38 @@
 {% endblock %}
 
 {% block content %}
-<div class="content-home">
+{% load tz %}
+{% timezone "Europe/Berlin" %}
+<div class="content-home border border-primary rounded-3 d-flex d-flex flex-column my-standard-background justify-content-center align-items-center">
     <h2>Statistics</h2>
     <div class="table-responsive">
         <table class="table table-bordered">
             <thead class="table-light">
             <tr>
-                <th>IP Address</th>
-                <th>Visit Count</th>
-                <th>First Visit</th>
-                <th>Last Visit</th>
-                <th>Continent</th>
-                <th>Country</th>
-                <th>City</th>
+                <th class="text-center">Lp.</th>
+                <th class="text-center">IP Address</th>
+                <th class="text-center">Visit Count</th>
+                <th class="text-center">First Visit</th>
+                <th class="text-center">Last Visit</th>
+                <th class="text-center">Continent</th>
+                <th class="text-center">Country</th>
+                <th class="text-center">City</th>
             </tr>
             </thead>
             <tbody>
             {% for stat in users_location_data %}
             <tr>
-                <td>{{ stat.ip_address }}</td>
-                <td>{{ stat.visit_count }}</td>
-                <td>{{ stat.first_visit }}</td>
-                <td>{{ stat.last_visit }}</td>
-                <td>{{ stat.continent }}</td>
-                <td>{{ stat.country }}</td>
-                <td>{{ stat.city }}</td>
+                <td class="text-center">{{ forloop.counter }}</td>
+                <td class="text-center">{{ stat.ip_address }}</td>
+                <td class="text-center">{{ stat.visit_count }}</td>
+                <td class="text-center">{{ stat.first_visit|date:"Y-m-d, H:i:s" }}</td>
+                <td class="text-center">{{ stat.last_visit|date:"Y-m-d, H:i:s" }}</td>
+                <td class="text-center">{{ stat.continent }}</td>
+                <td class="text-center">{{ stat.country }}</td>
+                <td class="text-center">{{ stat.city }}</td>
             </tr>
             {% endfor %}
+            {% endtimezone %}
             </tbody>
         </table>
     </div>

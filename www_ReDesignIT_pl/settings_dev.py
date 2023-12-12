@@ -28,6 +28,7 @@ SECRET_KEY = getenv('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+TIME_ZONE = 'UTC'
 
 # Application definition
 
