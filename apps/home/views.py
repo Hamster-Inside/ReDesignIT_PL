@@ -21,8 +21,8 @@ class HomeView(TemplateView):
             if not self.user_data:
                 self.user_data = Statistic.objects.create(ip_address=self.client_ip)
                 user_location = get_user_location_data(self.client_ip)
-                self.user_data.continent = user_location['continent_name']
-                self.user_data.country = user_location['country_name']
+                self.user_data.continent = user_location['timezone']
+                self.user_data.country = user_location['country']
                 self.user_data.city = user_location['city']
             else:
                 self.user_data.visit_count += 1
