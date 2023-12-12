@@ -51,5 +51,5 @@ class StatisticView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['users_location_data'] = Statistic.objects.all()
+        context['users_location_data'] = Statistic.objects.all().order_by('first_visit')
         return context
