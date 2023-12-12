@@ -48,3 +48,9 @@ class StatisticView(LoginRequiredMixin, UserPassesTestMixin, TemplateView):
 
     def handle_no_permission(self):
         return redirect('home')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['users_location_data'] = Statistic.objects.all()
+        print(context)
+        return context

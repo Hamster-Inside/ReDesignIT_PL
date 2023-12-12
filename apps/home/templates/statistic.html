@@ -6,6 +6,34 @@
 
 {% block content %}
 <div class="content-home">
-
+    <h2>Statistics</h2>
+    <div class="table-responsive">
+        <table class="table table-bordered">
+            <thead class="table-light">
+            <tr>
+                <th>IP Address</th>
+                <th>Visit Count</th>
+                <th>First Visit</th>
+                <th>Last Visit</th>
+                <th>Continent</th>
+                <th>Country</th>
+                <th>City</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for stat in users_location_data %}
+            <tr>
+                <td>{{ stat.ip_address }}</td>
+                <td>{{ stat.visit_count }}</td>
+                <td>{{ stat.first_visit }}</td>
+                <td>{{ stat.last_visit }}</td>
+                <td>{{ stat.continent }}</td>
+                <td>{{ stat.country }}</td>
+                <td>{{ stat.city }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endblock %}
