@@ -1,12 +1,11 @@
 .my-footer{
+    margin-top: 10px;
     height: 80px;
     width: 100%;
     bottom: 0;
 
 }
 .mid-foot{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     border-radius: 6px;
 }
 .foot{
@@ -18,4 +17,9 @@
 
 .digitalocean_ad{
     height: 100%;
+}
+@media screen and (max-width: 510px) {
+    .my-footer {
+        height: 160px;
+    }
 }
