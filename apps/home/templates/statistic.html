@@ -7,7 +7,7 @@
 {% block content %}
 {% load tz %}
 {% timezone "Europe/Berlin" %}
-<div class="content-home border border-primary rounded-3 d-flex d-flex flex-column my-standard-background justify-content-center align-items-center">
+<div class="div-main-statistics px-2 border border-primary rounded-3 d-flex flex-wrap d-flex flex-column my-standard-background justify-content-center align-items-center">
     <h2>Statistics</h2>
     <div class="table-responsive">
         <table class="table table-bordered">
@@ -36,9 +36,10 @@
                 <td class="text-center">{{ stat.city }}</td>
             </tr>
             {% endfor %}
-            {% endtimezone %}
+
             </tbody>
         </table>
     </div>
+    {% endtimezone %}
 </div>
 {% endblock %}
