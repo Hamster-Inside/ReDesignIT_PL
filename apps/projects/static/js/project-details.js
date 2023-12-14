@@ -35,7 +35,7 @@ function showProjectDetails(projectElement) {
                 ${githubLink}
                 ${youtubeLink}
             </div>
-            <div class="div-project-detail-summary px-4">
+            <div class="px-4">
                 ${summary}
             </div>
         </div>
