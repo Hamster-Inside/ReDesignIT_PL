@@ -29,7 +29,7 @@
                      data-youtube-url="{% if project.youtube_url %}{{ project.youtube_url }}{% endif %}"
                      data-youtube-logo-path="{% static '/images/youtube-logo.png' %}"
                      onclick="showProjectDetails(this)">
-                    <div class="project-image p-2">
+                    <div class="project-image d-flex align-items-center justify-content-center p-2">
                         {% if project.image %}
                         <img src="{{project.image.url}}">
                         {% else %}
