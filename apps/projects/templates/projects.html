@@ -3,34 +3,42 @@
 {% load static %}
 
 {% block styles %}
-<link rel="stylesheet" href="{% static '/css/projects-styles.css' %}" type="text/css"/>
 <link rel="stylesheet" href="{% static '/css/slick.css' %}" type="text/css"/>
 <link rel="stylesheet" href="{% static '/css/slick-theme.css' %}" type="text/css"/>
+<link rel="stylesheet" href="{% static '/css/projects-styles.css' %}" type="text/css"/>
 {% endblock %}
 
 {% block content %}
+
 <div class="my-grid-projects justify-content-center align-items-center">
     <div class="slick-projects">
         <div class="multiple-items mx-auto">
             {% for project in my_projects %}
-            <div class="projects-div mx-2 border border-primary rounded-3 my-standard-background"
-                 data-name="{{ project.project_name }}"
-                 data-summary="{{ project.summary|linebreaks }}"
-                 data-image="{% if project.image %}{{ project.image.url }}{% else %}{% static '/images/project-puzzle-pieces.jpg' %}{% endif %}"
-                 data-github-url="{% if project.github_url %}{{ project.github_url }}{% else %}{% endif %}"
-                 data-github-logo-path="{% static '/images/github-logo.png' %}"
-                 data-youtube-url="{% if project.youtube_url %}{{ project.youtube_url }}{% endif %}"
-                 data-youtube-logo-path="{% static '/images/youtube-logo.png' %}"
-                 onclick="showProjectDetails(this)">
-                <div class="project-image m-auto">
+            <div class="mx-2">
+                <div class="projects-div d-flex flex-column border border-primary rounded-3 my-standard-background"
+                     data-name="{{ project.project_name }}"
+                     data-summary="{{ project.summary|linebreaks }}"
+                     data-image="
                     {% if project.image %}
-                    <img src="{{project.image.url}}">
+                    {{ project.image.url }}
                     {% else %}
-                    <img src="{% static '/images/project-puzzle-pieces.jpg' %}">
-                    {% endif %}
-                </div>
-                <div class="project-title d-flex text-center justify-content-center align-items-center">
-                    <h4>{{ project.project_name }}</h4>
+                    {% static '/images/project-puzzle-pieces.jpg' %}
+                    {% endif %}"
+                     data-github-url="{% if project.github_url %}{{ project.github_url }}{% else %}{% endif %}"
+                     data-github-logo-path="{% static '/images/github-logo.png' %}"
+                     data-youtube-url="{% if project.youtube_url %}{{ project.youtube_url }}{% endif %}"
+                     data-youtube-logo-path="{% static '/images/youtube-logo.png' %}"
+                     onclick="showProjectDetails(this)">
+                    <div class="project-image p-2">
+                        {% if project.image %}
+                        <img src="{{project.image.url}}">
+                        {% else %}
+                        <img src="{% static '/images/project-puzzle-pieces.jpg' %}">
+                        {% endif %}
+                    </div>
+                    <div class="project-title d-flex text-center justify-content-center align-items-center">
+                        <h4>{{ project.project_name }}</h4>
+                    </div>
                 </div>
             </div>
             {% endfor %}
@@ -40,7 +48,6 @@
 
     </div>
 </div>
-
 <script type="text/javascript" src="{% static '/js/slick.min.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/slick-multiple.js' %}"></script>
 <script type="text/javascript" src="{% static '/js/project-details.js' %}"></script>
