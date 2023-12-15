@@ -38,6 +38,7 @@
 .slick-prev,
 .slick-next {
   margin-top: 10px;
+  z-index: 1;
 }
 
 .slick-prev {
