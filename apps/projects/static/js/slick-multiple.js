@@ -1,19 +1,36 @@
-$('.multiple-items').slick({
-  dots: true,
-  infinite: true,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-  autoplay: true,
-  autoplaySpeed: 2000,
-  centerMode: true,
-});
+$(document).ready(function() {
+  var projects = $(".multiple-items");
 
-$(window).resize(function() {
-  var projects = document.querySelector(".multiple-items");
-  if ($(window).width() < 900) {
-    $(projects).slick('slickSetOption', 'slidesToShow', 1);
+  // Initial configuration
+  initializeSlick();
+
+  // Update configuration on window resize
+  $(window).resize(function() {
+    if ($(window).width() < 600) {
+      destroySlick();
+      initializeSlick();
+    } else {
+      destroySlick();
+      initializeSlick();
+    }
+  });
+
+  function initializeSlick() {
+    $(projects).slick({
+      dots: true,
+      infinite: true,
+      slidesToShow: $(window).width() < 600 ? 1 : 3,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 2000,
+      arrows: $(window).width() >= 350,
+      centerMode: $(window).width() >= 350,
+    });
   }
-  else {
-    $(projects).slick('slickSetOption', 'slidesToShow', 3);
+
+  function destroySlick() {
+    if ($(projects).hasClass('slick-initialized')) {
+      $(projects).slick('unslick');
+    }
   }
 });

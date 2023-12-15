@@ -2,7 +2,7 @@
 
 function createLinkToSource(url, logoPath) {
     return url ? `
-        <div class="div-link-to-source rounded-3 d-flex align-items-center">
+        <div class="div-link-to-source rounded-3 d-flex mx-auto align-items-center justify-content-center">
             <a href="${url}" target="_blank">
                 <img src="${logoPath}">
             </a>
@@ -22,23 +22,26 @@ function showProjectDetails(projectElement) {
     var youtubeLink = createLinkToSource(youtubeUrl, youtubeLogoPath);
 
     var detailsHtml = `
-        <div class="div-project-detail">
-            <div class="project-image">
-                <img src="${imageUrl}">
+
+        <div class="row align-items-center">
+            <div class="project-detail-img col-lg-4 col-12 order-lg-1 order-1 p-2 justify-content-center align-items-center">
+                <img class="rounded-3" src="${imageUrl}">
             </div>
-            <div class="project-title d-flex text-center justify-content-center align-items-center">
-                <h4>${name}</h4>
+            <div class="col-lg-6 col-12 order-lg-2 order-2 mx-auto">
+                <h4 class="text-center">${name}</h4>
             </div>
         </div>
-        <div class="div-project-detail">
-            <div class="div-connected-links align-items-center">
+        <div class="row">
+            <div class="project-detail-links col-lg-4 col-12 order-lg-3 order-3 align-items-center">
                 ${githubLink}
                 ${youtubeLink}
             </div>
-            <div class="px-4">
+            <div class="col-lg-6 col-12 order-lg-4 order-4 px-4">
                 ${summary}
             </div>
         </div>
+
+
     `;
 
     document.getElementById('project-details').innerHTML = detailsHtml;
