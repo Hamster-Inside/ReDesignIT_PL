@@ -14,7 +14,7 @@
         </a></div>
     <div class="todo-taskgroup-title-author">
         <div class="todoapp-taskgroup-name todo-flex-center-everything">
-            <h1>Project: {{taskgroup.slug}}</h1>
+            <h1>Project: {{taskgroup.name}}</h1>
             <div class="cud-of-taskgroup mb-3">
                 <div><a href="{% url 'task_create' taskgroup.slug %}"><button class="btn btn-primary">Add Task</button></a></div>
                 <div><a href="{% url 'taskgroup_update' taskgroup.slug %}"><button class="btn btn-info">Edit Project</button></a></div>
