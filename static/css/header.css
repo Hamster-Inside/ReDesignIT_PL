@@ -29,7 +29,7 @@ flex-direction: row;
 }
 
 .top-container{
-height: 40px;
+max-height: 80px;
 }
 
 .header-button-like-div{

@@ -136,8 +136,8 @@ height: auto;
     }
 }
 
-.me-pic::after{
-filter: blur(10px);
+.polygon-for-pic::after{
+filter: blur(30px);
 }
 
 .git-logo {
