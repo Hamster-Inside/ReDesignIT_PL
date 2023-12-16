@@ -89,19 +89,56 @@ height: auto;
   box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
 }
 
-.me-pic {
-  max-width: 312px;
-  height: auto;
-  margin-top: 30px;
-  margin-left: auto;
-   margin-right: auto;
+.polygon-for-pic{
+    clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+    position: relative;
+      max-width: 90%;
+    margin: 30px auto 0 auto;
+
 }
 
+.me-pic {
+  clip-path: polygon(25% 0, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  background: linear-gradient(0deg, black, rgb(44, 43, 40));
+  width: 90%;
+  height: calc((315 / 350) * 100%);
+
+  }
+
 .me-pic img{
-width: 100%;
-height: 100%;
- object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
  }
+
+.polygon-for-pic::before, polygon-for-pic::after {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    width: calc(100% + 10px);
+    height: calc(100% + 10px);
+    z-index: -1;
+    background: linear-gradient(45deg, #e6fb04, #ff6600, #00ff66, #00ffff, #ff00ff, #ff0099, #6e0dd0, #ff3300, #099fff);
+    background-size: 400%;
+    animation: glow 20s linear infinite; /* Adjust the duration and other properties as needed */
+}
+
+@keyframes glow {
+    0% {
+        background-position: 0 0;
+    }
+    50% {
+        background-position: 400% 0;
+    }
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.me-pic::after{
+filter: blur(10px);
+}
 
 .git-logo {
   width: auto;
@@ -109,8 +146,8 @@ height: 100%;
 }
 
 .a-img-git-main{
-display: inline-block;
-max-height: 50px;
+  display: inline-block;
+  max-height: 50px;
 
 }
 

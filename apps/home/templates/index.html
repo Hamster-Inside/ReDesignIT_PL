@@ -46,8 +46,10 @@
                     <p>almost every day</b></p>
             </p>
         </div>
-        <div class="me-pic">
-            <img src="{% static '/images/hexa-me.png' %}"/>
+        <div class="polygon-for-pic d-flex justify-content-center align-items-center">
+            <div class="me-pic">
+                <img src="{% static '/images/AB-1000x1000.png' %}"/>
+            </div>
         </div>
     </div>
     <div class="div-main-right-section py-3">
@@ -70,7 +72,8 @@
             <div class="equal-row-height">
                 {% for app in apps %}
                 <a href="{{app.url}}" style="text-decoration:none">
-                    <button type="button" class="btn btn-primary d-flex align-items-center justify-content-center w-100">
+                    <button type="button"
+                            class="btn btn-primary d-flex align-items-center justify-content-center w-100">
                         {{app.name}}
                     </button>
                 </a>
