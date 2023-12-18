@@ -98,7 +98,6 @@ height: auto;
   background: linear-gradient(0deg, black, rgb(44, 43, 40));
   width: 90%;
   height: 90%;
-  aspect-ratio: 1.1547005/1;
   position: relative;
   justify-content: flex-end;
 }
@@ -137,10 +136,6 @@ height: auto;
     100% {
         background-position: 0 0;
     }
-}
-
-.polygon-for-pic::after{
-filter: blur(30px);
 }
 
 .git-logo {
