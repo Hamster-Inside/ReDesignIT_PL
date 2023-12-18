@@ -49,6 +49,7 @@
   right: 0;
 }
 
+
 @media (max-width: 300px) {
   .slick-prev {
     left: 10px;
