@@ -6,11 +6,13 @@ from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
 from django.template.loader import render_to_string
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from .forms import CustomRegistrationForm, LoginWithCaptchaForm
 from django_registration.backends.activation.views import RegistrationView, ActivationView
 from .email_sender import EmailSender
 from django.utils.translation import gettext_lazy as _
+import secrets
+import string
 
 
 class CustomLoginView(SuccessMessageMixin, LoginView):
@@ -22,6 +24,12 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
         if request.user.is_authenticated:
             return redirect("home")
         return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        if not form.is_valid():
+            return self.form_invalid(form)
+
+        return super().form_valid(form)
 
 
 class CustomRegistrationView(RegistrationView):
@@ -94,3 +102,9 @@ def login_redirect(request):
 
 def register_redirect(request):
     return redirect("register")
+
+
+def generate_random_password(length=12):
+    characters = string.ascii_letters + string.digits + string.punctuation
+    password = ''.join(secrets.choice(characters) for _ in range(length))
+    return password
