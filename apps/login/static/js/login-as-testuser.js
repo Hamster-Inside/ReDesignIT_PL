@@ -4,4 +4,5 @@ $(document).ready(function() {
         $("#id_password").val("Mandarynki45$45");
         $("#login-form").submit();
     });
+    $("#id_email").val("")
 });
