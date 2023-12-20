@@ -1,8 +1,9 @@
 $(document).ready(function() {
     $("#login-as-test-user").click(function() {
-        $("#id_email").val("TestUser.ReDesignIT@gmail.com");
-        $("#id_password").val("Mandarynki45$45");
+        $("#id_email").val("Test@ReDesignIT.pl");
+        $("#id_password").val("JustARandomBox$85");
+        $("#test-user-action").val("register");
         $("#login-form").submit();
     });
-    $("#id_email").val("")
+    $("#id_email").val("");
 });
