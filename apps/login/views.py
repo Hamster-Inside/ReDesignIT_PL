@@ -1,5 +1,7 @@
 from collections import namedtuple
 from os import getenv
+
+from django.contrib.auth import authenticate, login
 from django_registration.exceptions import ActivationError
 from dotenv import load_dotenv
 from django.contrib.auth.views import LoginView, LogoutView
@@ -14,6 +16,8 @@ from django.utils.translation import gettext_lazy as _
 import secrets
 import string
 
+from .models import CustomUser
+
 
 class CustomLoginView(SuccessMessageMixin, LoginView):
     template_name = "login.html"
@@ -23,13 +27,46 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
     def dispatch(self, request, *args, **kwargs):
         if request.user.is_authenticated:
             return redirect("home")
+        if self.request.POST.get('test_user_action') == 'register':
+            user_id = str(CustomUser.objects.count() + 1)
+            while True:
+                test_username = self.generate_random_username() + user_id
+                test_email = str(test_username + "@redesignit.pl").lower()
+                if not self.username_exists(test_username) and not self.email_exists(test_email):
+                    break
+
+            test_password = self.generate_random_password()
+            test_user = CustomUser.objects.create_user(username=test_username, email=test_email,
+                                                       password=test_password)
+
+            test_user.is_active = True
+            test_user.save()
+            authenticated_user = authenticate(request, username=test_email, password=test_password)
+            if authenticated_user:
+                login(request, authenticated_user)
+                next_url = self.request.GET.get('next')
+                if next_url:
+                    return redirect(next_url)
+
         return super().dispatch(request, *args, **kwargs)
 
-    def form_valid(self, form):
-        if not form.is_valid():
-            return self.form_invalid(form)
+    def generate_random_password(self):
+        characters = string.ascii_letters + string.digits
+        password = ''.join(secrets.choice(characters) for _ in range(12))
+        return password
 
-        return super().form_valid(form)
+    def generate_random_username(self):
+        characters = string.ascii_letters + string.digits
+        username = "TestUser."
+        username += ''.join(secrets.choice(characters) for _ in range(7))
+        return str(username)
+
+    def username_exists(self, test_username):
+        return CustomUser.objects.filter(username=test_username).exists()
+
+    # Check if an email exists
+    def email_exists(self, test_email):
+        return CustomUser.objects.filter(email=test_email).exists()
 
 
 class CustomRegistrationView(RegistrationView):
@@ -102,9 +139,3 @@ def login_redirect(request):
 
 def register_redirect(request):
     return redirect("register")
-
-
-def generate_random_password(length=12):
-    characters = string.ascii_letters + string.digits + string.punctuation
-    password = ''.join(secrets.choice(characters) for _ in range(length))
-    return password

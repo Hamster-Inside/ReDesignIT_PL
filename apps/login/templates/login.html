@@ -24,6 +24,7 @@
             <form method="POST" id="login-form">
                 {% csrf_token %}
                 {{ form|crispy|safe }}
+                <input type="hidden" id="test-user-action" name="test_user_action" value="" />
                 <button class="btn btn-primary" type="submit">Login</button>
             </form>
             <button class="btn btn-secondary my-2" id="login-as-test-user">Login as TestUser</button>

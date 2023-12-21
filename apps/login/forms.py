@@ -37,7 +37,7 @@ class LoginWithCaptchaForm(AuthenticationForm):
         self.fields = new_fields
 
     def clean(self):
-        email = self.cleaned_data.get("email")
+        email = str(self.cleaned_data.get("email")).lower()
         password = self.cleaned_data.get("password")
 
         if email is not None and password:
