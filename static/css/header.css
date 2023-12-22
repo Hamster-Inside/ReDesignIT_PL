@@ -6,6 +6,12 @@ color: yellow;
 height: 100%;
 }
 
+.top-container {
+max-width: 1000px;
+width: 100%;
+}
+
+
 .navbar-nav-as-row{
 flex-direction: row;
 }
