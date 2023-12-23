@@ -47,6 +47,8 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
                 next_url = self.request.GET.get('next')
                 if next_url:
                     return redirect(next_url)
+                else:
+                    return redirect("home")
 
         return super().dispatch(request, *args, **kwargs)
 
