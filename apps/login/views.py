@@ -2,6 +2,7 @@ from collections import namedtuple
 from os import getenv
 
 from django.contrib.auth import authenticate, login
+from django.core.exceptions import ValidationError
 from django_registration.exceptions import ActivationError
 from dotenv import load_dotenv
 from django.contrib.auth.views import LoginView, LogoutView
@@ -28,27 +29,32 @@ class CustomLoginView(SuccessMessageMixin, LoginView):
         if request.user.is_authenticated:
             return redirect("home")
         if self.request.POST.get('test_user_action') == 'register':
-            user_id = str(CustomUser.objects.count() + 1)
-            while True:
-                test_username = self.generate_random_username() + user_id
-                test_email = str(test_username + "@redesignit.pl").lower()
-                if not self.username_exists(test_username) and not self.email_exists(test_email):
-                    break
+            captcha_form = self.authentication_form(request.POST)
+            try:
+                captcha_form.fields['captcha'].validate(request.POST['g-recaptcha-response'])
+                user_id = str(CustomUser.objects.count() + 1)
+                while True:
+                    test_username = self.generate_random_username() + user_id
+                    test_email = str(test_username + "@redesignit.pl").lower()
+                    if not self.username_exists(test_username) and not self.email_exists(test_email):
+                        break
 
-            test_password = self.generate_random_password()
-            test_user = CustomUser.objects.create_user(username=test_username, email=test_email,
-                                                       password=test_password)
+                test_password = self.generate_random_password()
+                test_user = CustomUser.objects.create_user(username=test_username, email=test_email,
+                                                           password=test_password)
 
-            test_user.is_active = True
-            test_user.save()
-            authenticated_user = authenticate(request, username=test_email, password=test_password)
-            if authenticated_user:
-                login(request, authenticated_user)
-                next_url = self.request.GET.get('next')
-                if next_url:
-                    return redirect(next_url)
-                else:
-                    return redirect("home")
+                test_user.is_active = True
+                test_user.save()
+                authenticated_user = authenticate(request, username=test_email, password=test_password)
+                if authenticated_user:
+                    login(request, authenticated_user)
+                    next_url = self.request.GET.get('next')
+                    if next_url:
+                        return redirect(next_url)
+                    else:
+                        return redirect("home")
+            except ValidationError:
+                pass
 
         return super().dispatch(request, *args, **kwargs)
 
