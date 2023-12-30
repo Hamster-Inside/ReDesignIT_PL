@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}ReDesignIT{% endblock %}</title>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.ico' %}"/>
+    <link rel="stylesheet" href="{% static '/css/shop_main.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static '/css/shop_header.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static '/css/footer.css' %}" type="text/css"/>
+    {% block styles %} {% endblock %}
+    <script src="{% static '/js/jquery-3.7.1.min.js' %}"></script>
+<!--    <script src="{% static '/js/popper.min.js' %}"></script>-->
+</head>
+<body>
+<div id="page-container">
+    <div id="main-container">
+
+        {% include 'shop_header.html' %}
+
+        {% block content %}
+
+        {% endblock %}
+
+    </div>
+
+    {% include 'footer.html' %}
+
+</div>
+
+</body>
+</html>

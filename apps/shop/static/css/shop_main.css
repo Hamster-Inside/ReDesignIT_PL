@@ -1,0 +1,54 @@
+html, body {
+min-height: 100vh;
+min-width: 100vw;
+cursor: url('/static/images/pointer-32x32.png') 10 3, default;
+margin: 0;
+overflow-x: hidden;
+}
+
+body {
+  background-color: white;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: 'Roboto', sans-serif;
+}
+
+#page-container{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+#main-container{
+    flex: 1;
+    max-width: 1000px;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    min-height: 100%;
+}
+
+@media (max-width: 1000px) {
+    #main-container {
+        width: 100%; /* Change to 100% for smaller screens */
+    }
+    #page-container{
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+}
+
+.work-in-progress {
+  width: 400px;
+  height: auto;
+}
+
+.center{
+justify-content: center;
+align-items: center;
+vertical-align:middle;
+}
+
+.my-standard-background{
+    background-color:rgba(93,208,81,0.7);
+}

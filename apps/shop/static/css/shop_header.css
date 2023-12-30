@@ -1,0 +1,66 @@
+.header-login-text{
+color: yellow;
+}
+
+.top-container nav{
+height: 100%;
+}
+
+.top-container {
+max-width: 1000px;
+width: 100%;
+}
+
+
+.navbar-nav-as-row{
+flex-direction: row;
+}
+
+#header-sticky {
+  padding: 0px 16px;
+  color: #f1f1f1;
+}
+
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+ padding-top: 20px;
+}
+
+.top-container{
+max-height: 80px;
+}
+
+.header-button-like-div{
+    display:inline-block;
+    justify-content: center;
+    color:#444;
+    border:1px solid #CCC;
+    background:#a0fe81;
+    box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+    vertical-align:middle;
+    max-width: 200px;
+    min-width: 150px;
+    min-height: 60px;
+    padding: 5px;
+    text-align: center;
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-size: 25px;
+    }
+
+.header-button-like-div:hover {
+  background-color: yellow;
+  box-shadow: 0 0 5px -1px rgba(0,0,0,0.6);
+}
+
+.navbar-toggler {
+  background-color:rgba(93,208,81,0.7);
+}
