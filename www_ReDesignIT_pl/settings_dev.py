@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     'apps.contact',
     'apps.login',
     'apps.todoapp',
+    'apps.shop',
     'crispy_forms',
     'crispy_bootstrap5',
     'django_user_agents',
@@ -193,6 +194,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'apps/login/static'),
                     os.path.join(BASE_DIR, 'apps/about/static'),
                     os.path.join(BASE_DIR, 'apps/projects/static'),
                     os.path.join(BASE_DIR, 'apps/todoapp/static'),
+                    os.path.join(BASE_DIR, 'apps/shop/static'),
                     ]
 if DEBUG:
     STATICFILES_DIRS.append(os.path.join(BASE_DIR, 'static'))
