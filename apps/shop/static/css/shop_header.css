@@ -1,5 +1,5 @@
 .header-login-text{
-color: yellow;
+color: black;
 }
 
 .top-container nav{
@@ -63,4 +63,14 @@ max-height: 80px;
 
 .navbar-toggler {
   background-color:rgba(93,208,81,0.7);
+}
+
+.form-control-borderless {
+    border: none;
+}
+
+.form-control-borderless:hover, .form-control-borderless:active, .form-control-borderless:focus {
+    border: none;
+    outline: none;
+    box-shadow: none;
 }
