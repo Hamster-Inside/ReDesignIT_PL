@@ -15,3 +15,4 @@ django-ipware #to receive client's IP - make sure no spamming bots
 django-image-cropping #crop added images
 easy-thumbnails #crop functions work with django-image-cropping
 requests #for location data
+django-mptt #for a easy use of tree in shop app (easy loop through categories)
