@@ -12,6 +12,12 @@ It's a portfolio site with projects that I will be working on.
 If you want to run locally the code you need to create .env file based on .env.dist and fill your data
 Locally run on dev settings with command:
 
+Remember to type in console: 
+
+pip install -r requirements.txt
+
+To run as dev:
+
 python manage.py runserver 0.0.0.0:8000 --settings=www_ReDesignIT_pl.settings_dev
 
 
