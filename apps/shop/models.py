@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.utils.text import slugify
 from mptt.models import MPTTModel, TreeForeignKey
+from unidecode import unidecode
 
 
 class Category(MPTTModel):
@@ -15,7 +16,8 @@ class Category(MPTTModel):
 
     def save(self, *args, **kwargs):
         # Set the slug to be the same as the name, using Django's slugify function
-        self.slug = slugify(self.name)
+        ascii_category_name = unidecode(self.name)
+        self.slug = slugify(ascii_category_name)
 
         # Call the save method of the parent class (Model) to save the object
         super().save(*args, **kwargs)
