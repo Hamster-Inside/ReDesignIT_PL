@@ -10,7 +10,11 @@
 
     <h1>
         {% for category in breadcrumbs %}
+        {% if forloop.first %}
+        <a href="{% url 'shop' %}">{{ category.name }}</a>
+        {% else %}
         <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
+        {% endif %}
         {% if not forloop.last %} > {% endif %}
         {% endfor %}
     </h1>
