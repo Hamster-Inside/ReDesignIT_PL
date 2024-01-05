@@ -8,8 +8,9 @@
 <div class="content-shop">
 
 
-    <h1>{% for category in breadcrumbs %}
-        {{ category.name }}
+    <h1>
+        {% for category in breadcrumbs %}
+        <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
         {% if not forloop.last %} > {% endif %}
         {% endfor %}
     </h1>
