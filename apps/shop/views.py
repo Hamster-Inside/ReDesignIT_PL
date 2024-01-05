@@ -29,5 +29,4 @@ class CategoryDetailView(DetailView):
 
         descendants = category.get_descendants(include_self=True)
         context['products'] = Product.objects.filter(category__in=descendants)
-        print(context)
         return context
