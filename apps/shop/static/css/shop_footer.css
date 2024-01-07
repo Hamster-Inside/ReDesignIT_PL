@@ -1,0 +1,25 @@
+.my-footer{
+    margin-top: 10px;
+    height: 80px;
+    width: 100%;
+    bottom: 0;
+
+}
+.mid-foot{
+    border-radius: 6px;
+}
+.foot{
+    height: 60px;
+    font-size: 80%;
+    text-align: center;
+    line-height: 30px;
+}
+
+.digitalocean_ad{
+    height: 100%;
+}
+@media screen and (max-width: 510px) {
+    .my-footer {
+        height: 160px;
+    }
+}

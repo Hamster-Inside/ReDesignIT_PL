@@ -7,8 +7,8 @@
 {% block content %}
 <div class="content-shop">
 
-
-    <h1>
+    <p>
+    <span>
         {% for category in breadcrumbs %}
         {% if forloop.first %}
         <a href="{% url 'shop' %}">{{ category.name }}</a>
@@ -17,7 +17,8 @@
         {% endif %}
         {% if not forloop.last %} > {% endif %}
         {% endfor %}
-    </h1>
+    </span>
+    </p>
     {% for product in products %}
     <div class="bg-primary text-light p-3">
         <h3>{{ product.name }}</h3>

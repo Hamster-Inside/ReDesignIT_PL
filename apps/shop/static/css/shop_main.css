@@ -18,41 +18,20 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    padding: 10px;
 }
 #main-container{
     flex: 1;
-    max-width: 1000px;
     width: 100%;
     margin-right: auto;
     margin-left: auto;
     min-height: 100%;
 }
 
-@media (max-width: 1000px) {
-    #main-container {
-        width: 100%; /* Change to 100% for smaller screens */
-    }
-    #page-container{
-    padding-left: 5px;
-    padding-right: 5px;
-    }
-}
-
-.work-in-progress {
-  width: 400px;
-  height: auto;
-}
-
-.center{
-justify-content: center;
-align-items: center;
-vertical-align:middle;
-}
-
-.my-standard-background{
-    background-color:rgba(93,208,81,0.7);
-}
-
 .content-shop{
 margin-top: 100px;
+}
+
+.content-shop a{
+text-decoration: none;
 }
