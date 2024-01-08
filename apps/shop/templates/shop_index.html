@@ -6,11 +6,22 @@
 
 {% block content %}
 <div class="content-shop">
-
-
-    {% for category in categories %}
-    <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
-    {% endfor %}
-
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton2"
+                data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+        </button>
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
+            {% for category in categories %}
+            {% if not forloop.first %}
+            <li>
+                <a class="dropdown-item" href="{% url 'category_detail' slug=category.slug %}">
+                    {{ category.name }}
+                </a>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}
