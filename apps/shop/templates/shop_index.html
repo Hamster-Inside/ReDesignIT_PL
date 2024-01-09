@@ -16,7 +16,7 @@
             {% if not forloop.first %}
             <li>
                 <a class="dropdown-item" href="{% url 'category_detail' slug=category.slug %}">
-                    {{ category.name }}
+                    {{ category.name }} - {{ category.level }} - parent: {{category.parent}}
                 </a>
             </li>
             {% endif %}
