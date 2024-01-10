@@ -14,6 +14,9 @@ class Category(MPTTModel):
     def __str__(self):
         return self.name
 
+    class MPTTMeta:
+        order_insertion_by = ['level']
+
     def save(self, *args, **kwargs):
         # Set the slug to be the same as the name, using Django's slugify function
         ascii_category_name = unidecode(self.name)
