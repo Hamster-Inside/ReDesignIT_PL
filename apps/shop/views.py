@@ -5,13 +5,7 @@ from .models import Category, Product
 class ShopHomeView(ListView):
     model = Category
     template_name = 'shop_index.html'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        categories = Category.objects.all().order_by('level')
-        context['categories'] = categories
-        print(categories)
-        return context
+    context_object_name = 'nodes'
 
 
 class CategoryDetailView(DetailView):
