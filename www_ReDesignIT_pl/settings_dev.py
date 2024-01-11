@@ -92,6 +92,7 @@ INSTALLED_APPS = [
     'django_registration',
     'image_cropping',
     'easy_thumbnails',
+    'mptt',
 ]
 
 THUMBNAIL_PROCESSORS = (
