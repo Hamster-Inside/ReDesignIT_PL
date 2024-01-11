@@ -1,5 +1,5 @@
 {% extends "shop_base.html" %}
-
+{% load mptt_tags %}
 {% block styles %}
 <link rel="stylesheet" href="{% static '/css/shop-styles.css' %}" type="text/css"/>
 {% endblock %}
@@ -23,5 +23,15 @@
         {% endfor %}
         </ul>
     </div>
+        {% recursetree nodes %}
+        <li>
+            {{ node.name }}
+            {% if not node.is_leaf_node %}
+                <ul class="children">
+                    {{ children }}
+                </ul>
+            {% endif %}
+        </li>
+    {% endrecursetree %}
 </div>
 {% endblock %}
