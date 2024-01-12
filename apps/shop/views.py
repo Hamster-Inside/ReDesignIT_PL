@@ -1,11 +1,20 @@
 from django.views.generic import ListView, DetailView
 from .models import Category, Product
+from django.utils.html import escape
 
 
 class ShopHomeView(ListView):
     model = Category
     template_name = 'shop_index.html'
-    context_object_name = 'nodes'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        prepared_nodes = Category.objects.all()
+        for category in prepared_nodes:
+            category.indentation_range = range(category.level)
+        context['nodes'] = prepared_nodes
+        return context
 
 
 class CategoryDetailView(DetailView):

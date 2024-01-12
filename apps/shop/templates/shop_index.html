@@ -12,26 +12,19 @@
             Categories
         </button>
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton2">
-            {% for category in categories %}
-            {% if not forloop.first %}
+            {% recursetree nodes %}
             <li>
-                <a class="dropdown-item" href="{% url 'category_detail' slug=category.slug %}">
-                    {{ category.name }} - {{ category.level }} - parent: {{category.parent}}
+                <a class="dropdown-item" href="{% url 'category_detail' slug=node.slug %}">
+                    {% for i in node.indentation_range %} &nbsp; &nbsp; {% endfor %}
+                    {{ node.name }}
                 </a>
+                {% if not node.is_leaf_node %}
+                {{ children }}
             </li>
             {% endif %}
-        {% endfor %}
+            {% endrecursetree %}
         </ul>
     </div>
-        {% recursetree nodes %}
-        <li>
-            {{ node.name }}
-            {% if not node.is_leaf_node %}
-                <ul class="children">
-                    {{ children }}
-                </ul>
-            {% endif %}
-        </li>
-    {% endrecursetree %}
+
 </div>
 {% endblock %}
