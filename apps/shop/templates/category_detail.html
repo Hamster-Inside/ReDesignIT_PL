@@ -19,15 +19,30 @@
         {% endfor %}
     </span>
     </p>
-    {% for product in products %}
-    <div class="bg-primary text-light p-3">
-        <h3>{{ product.name }}</h3>
-        <p>{{ product.description }}</p>
-        <p>Price: {{ product.price }}</p>
-        <!-- Add other product details as needed -->
+    <div class="main-products-view d-flex flex-row p-3">
+        <div class="category-list-view justify-content-center align-items-center text-center">
+            Cat1 <br>
+            Cat2 <br>
+            Cat3 <br>
+            #TODO THE Categories after current one
+        </div>
+        <div class="products-list-view container">
+            <div class="row row-cols-3">
+                {% for product in products %}
+                <div class="col bg-primary text-light p-3 m-2 justify-content-center align-items-center text-center">
+                    <div class="product-img">
+                        #TODO IMG HERE
+                    </div>
+                    <div class="product-description">
+                        <h3>{{ product.name }}</h3>
+                    </div>
+                    <p>{{ product.description }}</p>
+                    <p>Price: {{ product.price }}</p>
+                    <!-- Add other product details as needed -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
-    {% endfor %}
-
-
 </div>
 {% endblock %}

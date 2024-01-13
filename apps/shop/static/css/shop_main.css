@@ -35,3 +35,16 @@ margin-top: 100px;
 .content-shop a{
 text-decoration: none;
 }
+
+.main-products-view {
+ width: 100%;
+}
+
+.category-list-view {
+    max-width: 200px;
+    min-width: 100px;
+}
+
+.products-list-view {
+ width: 100%;
+ }
