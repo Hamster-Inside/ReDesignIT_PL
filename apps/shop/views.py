@@ -1,6 +1,5 @@
 from django.views.generic import ListView, DetailView
 from .models import Category, Product
-from django.utils.html import escape
 
 
 class ShopHomeView(ListView):
@@ -36,5 +35,8 @@ class CategoryDetailView(DetailView):
             current_category = current_category.parent
         context['breadcrumbs'] = breadcrumbs
         descendants = category.get_descendants(include_self=True)
+        children = category.get_children()
         context['products'] = Product.objects.filter(category__in=descendants)
+        context['category_children'] = children
+
         return context
