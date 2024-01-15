@@ -19,22 +19,24 @@
     <div class="main-products-view d-flex flex-row p-3">
         <div class="category-list-view justify-content-center align-items-center text-center">
             {% for child_category in category_children %}
-            {{ child_category.name }} - {{ child_category.slug }} <br>
+            <a href="{% url 'category_detail' slug=child_category.slug %}"> {{ child_category.name }}</a><br>
             {% endfor %}
         </div>
         <div class="products-list-view container">
             <div class="row row-cols-3">
                 {% for product in products %}
-                <div class="col bg-primary text-light p-3 m-2 justify-content-center align-items-center text-center">
-                    <div class="product-img">
-                        #TODO IMG HERE
+                <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}">
+                    <div class="col bg-primary text-light p-3 m-2 justify-content-center align-items-center text-center">
+                        <div class="product-img">
+                            #TODO IMG HERE
+                        </div>
+                        <div class="product-description">
+                            <h3>{{ product.name }}</h3>
+                        </div>
+                        <p>{{ product.description }}</p>
+                        <p>Price: {{ product.price }}</p>
                     </div>
-                    <div class="product-description">
-                        <h3>{{ product.name }}</h3>
-                    </div>
-                    <p>{{ product.description }}</p>
-                    <p>Price: {{ product.price }}</p>
-                </div>
+                </a>
                 {% endfor %}
             </div>
         </div>
