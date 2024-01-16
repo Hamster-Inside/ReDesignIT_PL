@@ -7,7 +7,27 @@
 {% block content %}
 <div class="content-shop">
 
-    #TODO PRODUCT DETAILS
+
+    <p>
+    <span>
+        <a href="{% url 'shop' %}">Racoon Shop</a> >
+        {% for category in breadcrumbs %}
+        <a href="{% url 'category_detail' slug=category.slug %}">{{ category.name }}</a>
+        {% if not forloop.last %} > {% endif %}
+        {% endfor %}
+    </span>
+    </p>
+
+
+    <h1> Description </h1>
+    <div class="product-description-details">
+        {{product.description|linebreaksbr}}
+    </div>
+
+    <div class="product-price-in-details">
+        Price: {{product.price}}
+    </div>
+
 
 </div>
 {% endblock %}
