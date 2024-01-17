@@ -25,18 +25,24 @@
         <div class="products-list-view container">
             <div class="row row-cols-3">
                 {% for product in products %}
-                <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}">
-                    <div class="col bg-primary text-light p-3 m-2 justify-content-center align-items-center text-center">
-                        <div class="product-img">
-                            #TODO IMG HERE
+                {% if forloop.counter|divisibleby:4 %}
+                <div class="row row-cols-3">
+                    {% endif %}
+                    <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}">
+                        <div class="bg-primary text-light p-3 m-2 justify-content-center align-items-center text-center">
+                            <div class="product-img">
+                                #TODO IMG HERE
+                            </div>
+                            <div class="product-description">
+                                <h3>{{ product.name }}</h3>
+                            </div>
+                            <p>{{ product.description }}</p>
+                            <p>Price: {{ product.price }}</p>
                         </div>
-                        <div class="product-description">
-                            <h3>{{ product.name }}</h3>
-                        </div>
-                        <p>{{ product.description }}</p>
-                        <p>Price: {{ product.price }}</p>
-                    </div>
-                </a>
+                    </a>
+                    {% if forloop.counter|divisibleby:4 %}
+                </div>
+                {% endif %}
                 {% endfor %}
             </div>
         </div>
