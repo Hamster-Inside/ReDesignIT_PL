@@ -3,7 +3,7 @@
 {% block styles %}
 <link rel="stylesheet" href="{% static '/css/shop-styles.css' %}" type="text/css"/>
 {% endblock %}
-
+{% load static %}
 {% block content %}
 <div class="content-shop">
 
@@ -23,29 +23,29 @@
             {% endfor %}
         </div>
         <div class="products-list-view container">
-            <div class="row row-cols-3">
+            <div class="row row-cols-1 row-cols-md-3 align-items-stretch">
                 {% for product in products %}
-                {% if forloop.counter|divisibleby:4 %}
-                <div class="row row-cols-3">
-                    {% endif %}
-                    <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}">
-                        <div class="bg-primary text-light p-3 m-2 justify-content-center align-items-center text-center">
+                <div class="col mb-4">
+                    <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}"
+                       class="product-item">
+                        <div class="product-item-prev bg-primary text-light p-3 m-2">
                             <div class="product-img">
                                 #TODO IMG HERE
                             </div>
                             <div class="product-description">
                                 <h3>{{ product.name }}</h3>
                             </div>
-                            <p>{{ product.description }}</p>
+                            <p>{{ product.description|linebreaks }}</p>
                             <p>Price: {{ product.price }}</p>
                         </div>
                     </a>
-                    {% if forloop.counter|divisibleby:4 %}
                 </div>
-                {% endif %}
                 {% endfor %}
             </div>
         </div>
     </div>
 </div>
+
+<script type="text/javascript" src="{% static '/js/equal-height-shop-grid.js' %}"></script>
+
 {% endblock %}
