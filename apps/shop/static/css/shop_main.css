@@ -1,7 +1,6 @@
 html, body {
     min-height: 100vh;
     min-width: 100vw;
-    cursor: url('/static/images/pointer-32x32.png') 10 3, default;
     margin: 0;
     overflow-x: hidden;
 }
