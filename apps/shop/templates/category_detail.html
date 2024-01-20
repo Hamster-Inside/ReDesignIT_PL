@@ -4,6 +4,7 @@
 
 {% endblock %}
 {% load static %}
+{% load cropping %}
 {% block content %}
 <div class="content-shop">
 
@@ -30,7 +31,9 @@
                        class="product-item">
                         <div class="product-item-prev bg-primary text-light p-3 m-2">
                             <div class="product-img">
-                                #TODO IMG HERE
+                                {% if product.image %}
+                                <img src="{% cropped_thumbnail product 'cropping' %}" class="thumbnail" alt="{{ product.name }}">
+                                {% endif %}
                             </div>
                             <div class="product-description">
                                 <h3>{{ product.name }}</h3>
