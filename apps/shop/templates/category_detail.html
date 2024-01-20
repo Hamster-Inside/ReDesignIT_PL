@@ -28,18 +28,18 @@
                 {% for product in products %}
                 <div class="col mb-4">
                     <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}"
-                       class="product-item">
-                        <div class="product-item-prev bg-primary text-light p-3 m-2">
-                            <div class="product-img">
+                       class="product-item bg-primary text-light p-3 m-2">
+                        <div class="product-item-prev d-flex flex-column justify-content-center align-items-center">
+                            <div class="product-img m-auto">
                                 {% if product.image %}
-                                <img src="{% cropped_thumbnail product 'cropping' %}" class="thumbnail" alt="{{ product.name }}">
+                                <img src="{% cropped_thumbnail product 'cropping' %}" class="thumbnail"
+                                     alt="{{ product.name }}">
                                 {% endif %}
                             </div>
                             <div class="product-description">
                                 <h3>{{ product.name }}</h3>
                             </div>
-                            <p>{{ product.description|linebreaks }}</p>
-                            <p>Price: {{ product.price }}</p>
+                            <div class="product-price">Price: {{ product.price }}</div>
                         </div>
                     </a>
                 </div>
@@ -49,6 +49,6 @@
     </div>
 </div>
 
-<script type="text/javascript" src="{% static '/js/equal-height-shop-grid.js' %}"></script>
+<!--<script type="text/javascript" src="{% static '/js/equal-height-shop-grid.js' %}"></script>-->
 
 {% endblock %}
