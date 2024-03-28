@@ -26,9 +26,9 @@
         <div class="products-list-view container">
             <div class="row row-cols-1 row-cols-md-3 align-items-stretch">
                 {% for product in products %}
-                <div class="col mb-4">
+                <div class="col mb-4 gx-2">
                     <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}"
-                       class="product-item bg-primary text-light p-3 m-2">
+                       class="product-item border border-primary rounded-3 p-3 m-2">
                         <div class="product-item-prev d-flex flex-column justify-content-center align-items-center">
                             <div class="product-img m-auto">
                                 {% if product.image %}
