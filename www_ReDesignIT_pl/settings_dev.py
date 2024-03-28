@@ -146,9 +146,9 @@ WSGI_APPLICATION = 'www_ReDesignIT_pl.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': getenv('DJANGO_DB'),
-        'USER': getenv('DJANGO_DB_USER'),
-        'PASSWORD': getenv('DJANGO_DB_PASSWORD'),
+        'NAME': "localtestdb_redesignit",
+        'USER': "testuser_redesignit",
+        'PASSWORD': "TestPassword",
         'HOST': 'localhost',
         'PORT': '5432',
     }
