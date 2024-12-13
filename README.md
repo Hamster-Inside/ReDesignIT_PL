@@ -1,5 +1,6 @@
 # ReDesignIT_PL
-My Website -> https://ReDesignIT.pl
+My Website which was hosted since 01.12.2023.
+Since 01.12.2024 its not changed to the DRF + React project. This project became obsolete as it was not separating the front and backend as it should
 
 
 Site hosted since 29.10.2023 with help of the Django
